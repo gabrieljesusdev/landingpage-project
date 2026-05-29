@@ -1,23 +1,91 @@
+---
+import "../styles/globals.css";
+
+const {
+  title = "[Nome da empresa] | Conserto de ar-condicionado com resposta rápida",
+  description =
+    "[Nome da empresa] é especializada em conserto e manutenção de ar-condicionado, com atendimento rápido, diagnóstico preciso e serviço confiável para residências e empresas.",
+  keywords =
+    "conserto de ar-condicionado, manutenção de ar-condicionado, assistência técnica ar-condicionado, técnico de ar-condicionado, reparo de ar-condicionado, [Nome da empresa]"
+} = Astro.props;
+
+const pageTitle = `${title}`;
+---
+
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/og-image.jpg" />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="font-sans">
+    <slot />
+
+    <script type="application/ld+json" is:inline>
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        name: "[Nome da empresa]",
+        description,
+        areaServed: "Brasil",
+        serviceType: "Conserto e manutenção de ar-condicionado",
+        url: typeof Astro.site === "undefined" ? undefined : Astro.site.href,
+        potentialAction: {
+          "@type": "ContactAction",
+          target: "Contato comercial"
+        }
+      })}
+    </script>
+
+    <script is:inline>
+      const revealElements = document.querySelectorAll("[data-reveal]");
+
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.18,
+          rootMargin: "0px 0px -8% 0px"
+        }
+      );
+
+      revealElements.forEach((element) => revealObserver.observe(element));
+    </script>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    width: 100%;
+    min-height: 100%;
+  }
 </style>

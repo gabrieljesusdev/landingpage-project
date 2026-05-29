@@ -1,0 +1,31 @@
+---
+import { MapPin, Clock3, PhoneCall } from "lucide-react";
+---
+
+<footer id="contato" class="mt-8 bg-footer">
+  <div
+    class="mx-auto flex w-full max-w-[1180px] flex-col gap-5 px-4 py-8 sm:px-6 lg:px-10"
+    data-reveal
+  >
+    <div class="flex flex-col gap-1">
+      <strong class="font-display text-lg font-semibold text-white"
+        >[Nome da Empresa]</strong
+      >
+      <span class="text-sm text-white/65">© Todos os direitos reservados</span>
+    </div>
+
+    <div
+      class="flex flex-col gap-2 text-sm text-white/85 md:flex-row md:flex-wrap md:gap-8"
+    >
+      <p class="flex items-center gap-2">
+        <MapPin className="h-4 w-4" /> Localização &nbsp; Franco da Rocha, SP
+      </p>
+      <p class="flex items-center gap-2">
+        <Clock3 className="h-4 w-4" /> Horário de Atendimento &nbsp; 09:00 - 18:00
+      </p>
+      <p class="flex items-center gap-2">
+        <PhoneCall className="h-4 w-4" /> Telefone para Contato &nbsp; (11) 93041-6535
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,65 @@
+---
+import { AirVent, ShieldCheck, Sparkles, Drill, Flame } from "lucide-react";
+
+const services = [
+  {
+    title: "Conserto de Ar-Condicionado",
+    desc: "Diagnóstico completo e reparo rápido para seu equipamento voltar a funcionar perfeitamente.",
+    Icon: AirVent,
+  },
+  {
+    title: "Manutenção preventiva",
+    desc: "Evite falhas inesperadas, mau funcionamento e gastos maiores no futuro.",
+    Icon: ShieldCheck,
+  },
+  {
+    title: "Higienização e Limpeza",
+    desc: "Melhore a qualidade do ar e elimine sujeira, fungos e mau cheiro.",
+    Icon: Sparkles,
+  },
+  {
+    title: "Instalação e Desinstalação",
+    desc: "Instalação segura e eficiente para máximo desempenho do aparelho.",
+    Icon: Drill,
+  },
+  {
+    title: "Recarga de Gás",
+    desc: "Seu ar não está gelando? Fazemos verificação e recarga com segurança.",
+    Icon: Flame,
+  },
+];
+---
+
+<section
+  id="servicos"
+  class="mx-auto flex w-full max-w-[1180px] flex-col px-4 py-6 sm:px-6 lg:px-10"
+  data-reveal
+>
+  <h2
+    class="text-center font-display text-h2 font-bold text-text-strong"
+    data-reveal
+    data-reveal-delay="1"
+  >
+    Nossos serviços estão te esperando
+  </h2>
+
+  <div class="mt-7 flex flex-wrap justify-center gap-4">
+    {
+      services.map((item) => (
+        <article class="flex min-h-[116px] w-full max-w-[360px] flex-1 items-start gap-3 rounded-md border border-border-soft bg-bg-surface p-4 shadow-soft sm:min-w-[310px]">
+          <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-[#F8F8F9] text-lg">
+            <item.Icon className="h-5 w-5 text-text-strong" />
+          </span>
+          <div class="flex flex-col">
+            <h3 class="text-[1.05rem] font-semibold text-text-strong">
+              {item.title}
+            </h3>
+            <p class="mt-1 text-sm leading-[1.45] text-text-body">
+              {item.desc}
+            </p>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>

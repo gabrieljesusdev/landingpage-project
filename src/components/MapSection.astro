@@ -1,0 +1,39 @@
+---
+import { MessageCircle, ArrowUpRight } from "lucide-react";
+---
+
+<section
+  id="mapa"
+  class="mx-auto flex w-full max-w-[1180px] flex-col px-4 py-12 sm:px-6 lg:px-10"
+  data-reveal
+>
+  <div class="flex flex-wrap items-center gap-3">
+    <h2 class="font-display text-h2 font-bold text-text-strong">
+      Nos encontre no Mapa
+    </h2>
+    <span class="flex items-center gap-1 text-sm font-semibold text-success">
+      <MessageCircle className="h-4 w-4" /> WhatsApp
+    </span>
+    <span class="text-sm text-text-soft">(11) 93041-6535</span>
+  </div>
+
+  <div
+    class="relative mt-4 flex h-[420px] w-full overflow-hidden rounded-lg border border-border-soft bg-white shadow-soft"
+  >
+    <iframe
+      title="Mapa Franco da Rocha SP"
+      src="https://www.google.com/maps?q=Franco%20da%20Rocha%20SP&z=14&output=embed"
+      class="h-full w-full border-0"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <a
+      href="https://maps.google.com/?q=Franco%20da%20Rocha%20SP"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="absolute bottom-3 right-3 flex items-center gap-1 rounded-pill bg-white/90 px-4 py-2 text-sm font-medium text-text-body backdrop-blur-md transition-colors duration-200 hover:text-secondary"
+    >
+      Abrir Mapa <ArrowUpRight className="h-4 w-4" />
+    </a>
+  </div>
+</section>

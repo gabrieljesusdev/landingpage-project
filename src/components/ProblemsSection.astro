@@ -1,0 +1,56 @@
+---
+import technician from "../assets/bg-technician.jpg";
+import { CircleX } from "lucide-react";
+
+const problems = [
+  "Baixo desempenho e alto consumo de energia",
+  "Não está gelando",
+  "Vazando água",
+  "Fazendo muito barulho",
+  "Mau cheiro ao ligar",
+  "Desligando sozinho",
+  "Controle não funciona",
+];
+---
+
+<section
+  class="mx-auto flex w-full max-w-[1180px] flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-center md:gap-10 lg:px-10"
+  data-reveal
+>
+  <div class="flex flex-1 flex-col">
+    <h2
+      class="font-display text-h2 font-bold leading-[1.14] text-text-strong"
+      data-reveal
+      data-reveal-delay="1"
+    >
+      Seu ar-condicionado apresenta
+      <br />
+      algum destes problemas?
+    </h2>
+
+    <ul class="mt-6 flex flex-col gap-2 text-sm text-danger sm:text-base">
+      {
+        problems.map((item) => (
+          <li class="flex items-center gap-2">
+            <CircleX className="h-4 w-4 shrink-0" />
+            <span>{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="mt-5 max-w-[40ch] text-base leading-[1.45] text-text-body">
+      Nossa equipe identifica o defeito rapidamente e realiza o reparo com
+      segurança e eficiência.
+    </p>
+  </div>
+
+  <div class="flex flex-1 justify-end">
+    <img
+      src={technician.src}
+      alt="Ar-condicionado em manutenção"
+      class="h-[280px] w-full max-w-[520px] rounded-lg object-cover shadow-soft"
+      loading="lazy"
+    />
+  </div>
+</section>
