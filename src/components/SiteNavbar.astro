@@ -1,40 +1,44 @@
-<header class="fixed bg-white inset-x-0 top-0 z-50">
+---
+import { siteContent, whatsappHref } from "../lib/cms";
+
+const { brand, navbar } = siteContent;
+---
+
+{
+  navbar.enabled && (
+    <header class="fixed bg-white inset-x-0 top-0 z-50">
   <div
     class="mx-auto flex h-12.5 w-full md:max-w-295 items-center justify-between px-4 sm:px-6 lg:px-10"
   >
-    <a href="/" class="font-display text-lg font-semibold text-black">Entrans</a
-    >
+    <a href="/" class="font-display text-lg font-semibold text-black">{brand.name}</a>
 
     <nav
       class="hidden items-center gap-7 text-sm font-medium text-black/95 md:flex"
     >
-      <a
-        href="/#inicio"
-        class="transition-colors duration-200 hover:text-primary">Início</a
-      >
-      <a
-        href="/#servicos"
-        class="transition-colors duration-200 hover:text-primary">Serviços</a
-      >
-      <a
-        href="/#contato"
-        class="transition-colors duration-200 hover:text-primary">Contato</a
-      >
-      <a href="/#mapa" class="transition-colors duration-200 hover:text-primary"
-        >Cidades que atendemos</a
-      >
+      {
+        navbar.links.map((link) => (
+          <a
+            href={link.href}
+            class="transition-colors duration-200 hover:text-primary"
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </nav>
 
     <a
-      href="https://wa.me/5511930416535?text=Ol%C3%A1%2C%20quero%20falar%20com%20um%20especialista%20em%20ar-condicionado."
+      href={whatsappHref(navbar.ctaMessage)}
       target="_blank"
       rel="noopener noreferrer"
       class="rounded-pill bg-primary px-2 text-[12px] md:px-5 py-2 md:text-sm font-semibold text-white shadow-[0_10px_24px_rgba(241,116,50,0.36)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
     >
-      Falar com um Especialista
+      {navbar.ctaText}
     </a>
   </div>
 </header>
+  )
+}
 
 <style>
   /* header { */

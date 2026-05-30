@@ -1,46 +1,31 @@
 ---
 import { MessageCircle, ArrowUpRight, MapPin } from "lucide-react";
+import { siteContent } from "../lib/cms";
 
-const cities = [
-  {
-    name: "Franco da Rocha",
-    markerClass: "left-[52%] top-[52%]",
-  },
-  {
-    name: "Francisco Morato",
-    markerClass: "left-[50%] top-[46%]",
-  },
-  {
-    name: "Jundiai",
-    markerClass: "left-[40%] top-[28%]",
-  },
-  {
-    name: "Caieiras",
-    markerClass: "left-[51%] top-[66%]",
-  },
-];
-
-const mapEmbedUrl =
-  "https://www.google.com/maps?ll=-23.2900,-46.7700&z=10&output=embed";
+const section = siteContent.home.map;
+const cities = section.cities;
+const mapEmbedUrl = section.mapEmbedUrl;
 
 const mapsQuery = encodeURIComponent(
-  "Franco da Rocha, Francisco Morato, Jundiai, Caieiras",
+  section.mapsQuery,
 );
 ---
 
-<section
-  id="mapa"
-  class="mx-auto flex w-full max-w-295 flex-col px-4 py-12 sm:px-6 lg:px-10"
-  data-reveal
->
+{
+  section.enabled && (
+    <section
+      id="mapa"
+      class="mx-auto flex w-full max-w-295 flex-col px-4 py-12 sm:px-6 lg:px-10"
+      data-reveal
+    >
   <div class="flex flex-wrap items-center gap-3">
     <h2 class="font-display text-h2 font-bold text-text-strong">
-      Cidades que atendemos
+      {section.title}
     </h2>
     <span class="flex items-center gap-1 text-sm font-semibold text-success">
-      <MessageCircle className="h-4 w-4" /> WhatsApp
+      <MessageCircle className="h-4 w-4" /> {section.whatsappLabel}
     </span>
-    <span class="text-sm text-text-soft">(11) 93041-6535</span>
+    <span class="text-sm text-text-soft">{section.phoneText}</span>
   </div>
 
   <div class="mt-4 flex flex-wrap gap-2">
@@ -88,3 +73,5 @@ const mapsQuery = encodeURIComponent(
     </a>
   </div>
 </section>
+  )
+}

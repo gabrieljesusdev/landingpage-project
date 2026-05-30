@@ -1,0 +1,395 @@
+{
+  "seo": {
+    "defaultTitle": "Entrans | Conserto de ar-condicionado com resposta rápida",
+    "defaultDescription": "Entrans é especializada em conserto e manutenção de ar-condicionado, com atendimento rápido, diagnóstico preciso e serviço confiável para residências e empresas.",
+    "keywords": "conserto de ar-condicionado, manutenção de ar-condicionado, assistência técnica ar-condicionado, técnico de ar-condicionado, reparo de ar-condicionado, Entrans"
+  },
+  "theme": {
+    "primary": "#f17432",
+    "secondary": "#3a90cd",
+    "bgPage": "#f4f4f5",
+    "bgSurface": "#ffffff",
+    "textStrong": "#231a1a",
+    "textBody": "#454045",
+    "textSoft": "#7a767a",
+    "footer": "#0e1116",
+    "danger": "#f35a5a",
+    "success": "#25d366",
+    "star": "#f6a23a",
+    "borderSoft": "#e9e9eb",
+    "fontSans": "Poppins",
+    "fontDisplay": "Poppins"
+  },
+  "brand": {
+    "name": "Entrans",
+    "whatsappNumber": "5511930416535"
+  },
+  "navbar": {
+    "enabled": true,
+    "links": [
+      { "label": "Início", "href": "/#inicio" },
+      { "label": "Serviços", "href": "/#servicos" },
+      { "label": "Contato", "href": "/#contato" },
+      { "label": "Cidades que atendemos", "href": "/#mapa" }
+    ],
+    "ctaText": "Falar com um Especialista",
+    "ctaMessage": "Olá, quero falar com um especialista em ar-condicionado."
+  },
+  "home": {
+    "hero": {
+      "enabled": true,
+      "slides": [
+        {
+          "image": "/uploads/bg-technician-1.jpg",
+          "alt": "Técnico realizando manutenção em ar-condicionado"
+        },
+        {
+          "image": "/uploads/bg-technician-2.jpg",
+          "alt": "Equipe técnica em atendimento de ar-condicionado"
+        },
+        {
+          "image": "/uploads/bg-technician-3.jpg",
+          "alt": "Manutenção profissional em sistema de ar-condicionado"
+        }
+      ],
+      "title": "Assistência técnica profissional residencial e comercial.",
+      "subtitle": "Diagnóstico profissional e atendimento eficiente.",
+      "ctaText": "Solicitar orçamento gratuito",
+      "ctaMessage": "Olá, quero solicitar um orçamento gratuito para meu ar-condicionado.",
+      "stats": [
+        "+1000 clientes atendidos",
+        "★ 5 estrelas no Google"
+      ]
+    },
+    "servicesShowcase": {
+      "enabled": true,
+      "label": "Serviços",
+      "title": "Soluções técnicas para o seu negócio.",
+      "cards": [
+        {
+          "title": "Manutenção de Ar Condicionado",
+          "description": "Limpeza e ajustes para manter o equipamento funcionando bem.",
+          "image": "/uploads/bg-technician-1.jpg",
+          "alt": "Técnico fazendo manutenção de ar-condicionado",
+          "href": "/servicos/ar-condicionado"
+        },
+        {
+          "title": "Manutenção de Gerador",
+          "description": "Revisão preventiva e testes para garantir operação contínua.",
+          "image": "/uploads/bg-technician-2.jpg",
+          "alt": "Equipe realizando manutenção de gerador",
+          "href": "/servicos/gerador"
+        },
+        {
+          "title": "Manutenção Elétrica",
+          "description": "Diagnóstico e reparos com foco em segurança e desempenho.",
+          "image": "/uploads/bg-technician-3.jpg",
+          "alt": "Serviço de manutenção elétrica em ambiente técnico",
+          "href": "/servicos/eletrica"
+        },
+        {
+          "title": "Manutenção Hidráulica",
+          "description": "Correção de vazamentos e ajustes em tubulações e conexões.",
+          "image": "/uploads/bg-technician-1.jpg",
+          "alt": "Profissional executando manutenção hidráulica",
+          "href": "/servicos/hidraulica"
+        }
+      ]
+    },
+    "iconServices": {
+      "enabled": true,
+      "title": "Nossos serviços estão te esperando",
+      "cards": [
+        {
+          "title": "Manutenção de Ar-Condicionado",
+          "desc": "Limpeza técnica, ajustes de performance e reparos para manter o sistema eficiente.",
+          "icon": "AirVent",
+          "href": "/servicos/ar-condicionado"
+        },
+        {
+          "title": "Manutenção de Gerador",
+          "desc": "Revisão preventiva, testes de carga e correções para evitar paradas inesperadas.",
+          "icon": "Flame",
+          "href": "/servicos/gerador"
+        },
+        {
+          "title": "Manutenção Elétrica",
+          "desc": "Diagnóstico de falhas, ajustes de segurança e reparos em circuitos e painéis.",
+          "icon": "ShieldCheck",
+          "href": "/servicos/eletrica"
+        },
+        {
+          "title": "Manutenção Hidráulica",
+          "desc": "Correção de vazamentos, revisão de pressão e manutenção em tubulações e conexões.",
+          "icon": "Drill",
+          "href": "/servicos/hidraulica"
+        }
+      ]
+    },
+    "testimonials": {
+      "enabled": true,
+      "title": "O que falam de nós?",
+      "highlight": "+1000 clientes atendidos",
+      "ratingText": "5 estrelas no Google",
+      "preCtaText": "não espere mais tempo",
+      "ctaText": "Fazer orçamento gratuito",
+      "ctaMessage": "Olá, vim pelo site e quero fazer um orçamento gratuito.",
+      "bottomText": "atendimento rápido qualidade segurança é nossa prioridade.",
+      "items": [
+        {
+          "name": "Gabriel Jesus",
+          "text": "Atendimento rápido e resolveu no mesmo dia.",
+          "avatar": "https://i.pravatar.cc/80?img=11"
+        },
+        {
+          "name": "Rui Carlos",
+          "text": "Atendimento rápido e resolveu no mesmo dia.",
+          "avatar": "https://i.pravatar.cc/80?img=15"
+        },
+        {
+          "name": "Cássia E.",
+          "text": "Ótimo custo-benefício e atendimento super educado.",
+          "avatar": "https://i.pravatar.cc/80?img=32"
+        },
+        {
+          "name": "Maria N.",
+          "text": "Chegaram no horário e deixaram tudo limpo.",
+          "avatar": "https://i.pravatar.cc/80?img=48"
+        },
+        {
+          "name": "André P.",
+          "text": "Preço justo e técnico muito transparente.",
+          "avatar": "https://i.pravatar.cc/80?img=53"
+        }
+      ]
+    },
+    "map": {
+      "enabled": true,
+      "title": "Cidades que atendemos",
+      "whatsappLabel": "WhatsApp",
+      "phoneText": "(11) 93041-6535",
+      "mapsQuery": "Franco da Rocha, Francisco Morato, Jundiai, Caieiras",
+      "mapEmbedUrl": "https://www.google.com/maps?ll=-23.2900,-46.7700&z=10&output=embed",
+      "cities": [
+        {
+          "name": "Franco da Rocha",
+          "markerClass": "left-[52%] top-[52%]"
+        },
+        {
+          "name": "Francisco Morato",
+          "markerClass": "left-[50%] top-[46%]"
+        },
+        {
+          "name": "Jundiai",
+          "markerClass": "left-[40%] top-[28%]"
+        },
+        {
+          "name": "Caieiras",
+          "markerClass": "left-[51%] top-[66%]"
+        }
+      ]
+    }
+  },
+  "footer": {
+    "enabled": true,
+    "copyright": "© Todos os direitos reservados",
+    "locationLabel": "Localização",
+    "locationText": "Franco da Rocha, SP",
+    "hoursLabel": "Horário de Atendimento",
+    "hoursText": "07:00 - 18:00",
+    "phoneLabel": "Telefone para Contato",
+    "phoneText": "(11) 99890-6155"
+  },
+  "servicesPage": {
+    "title": "Entrans | Serviços",
+    "description": "Veja os serviços oferecidos pela Entrans em manutenção de ar-condicionado, gerador, elétrica e hidráulica.",
+    "badge": "Serviços",
+    "heading": "Galeria de Ar Condicionado",
+    "intro": "Explore nossa galeria de serviços especializados em manutenção de ar-condicionado.",
+    "backText": "Voltar para o início",
+    "cards": [
+      {
+        "title": "Manutenção de Ar Condicionado",
+        "href": "/servicos/ar-condicionado",
+        "image": "/uploads/bg-technician-1.jpg",
+        "alt": "Técnico realizando manutenção de ar-condicionado",
+        "description": "Limpeza técnica, ajustes de performance e reparos para manter o sistema eficiente."
+      },
+      {
+        "title": "Manutenção de Gerador",
+        "href": "/servicos/gerador",
+        "image": "/uploads/bg-technician-2.jpg",
+        "alt": "Equipe técnica em manutenção de gerador",
+        "description": "Revisão preventiva, testes de carga e correções para evitar paradas inesperadas."
+      },
+      {
+        "title": "Manutenção Elétrica",
+        "href": "/servicos/eletrica",
+        "image": "/uploads/bg-technician-3.jpg",
+        "alt": "Profissional em inspeção elétrica",
+        "description": "Diagnóstico de falhas, ajustes de segurança e reparos em circuitos e painéis."
+      },
+      {
+        "title": "Manutenção Hidráulica",
+        "href": "/servicos/hidraulica",
+        "image": "/uploads/bg-technician-1.jpg",
+        "alt": "Técnico executando manutenção hidráulica",
+        "description": "Correção de vazamentos, revisão de pressão e manutenção em tubulações e conexões."
+      }
+    ]
+  },
+  "serviceDetails": [
+    {
+      "slug": "ar-condicionado",
+      "title": "Manutenção de Ar Condicionado",
+      "description": "Aumente a vida útil do equipamento, reduza consumo e evite panes em dias críticos.",
+      "image": "/uploads/bg-technician-1.jpg",
+      "alt": "Técnico realizando manutenção completa em ar-condicionado",
+      "topics": [
+        "Limpeza técnica de evaporadora e condensadora",
+        "Higienização para melhorar qualidade do ar",
+        "Manutenção preventiva com checklist completo",
+        "Correção de vazamento de gás e recarga segura",
+        "Troca de capacitor, sensor e peças críticas",
+        "Ajuste de performance para gelar mais rápido",
+        "Diagnóstico de ruído, oscilação e mau cheiro",
+        "Atendimento para residencial e comercial"
+      ],
+      "ctaText": "Quero orçamento para meu ar-condicionado",
+      "gallery": [
+        {
+          "title": "Limpeza Técnica Completa",
+          "description": "Higienização interna para melhorar desempenho e qualidade do ar.",
+          "category": "Preventiva",
+          "image": "/uploads/bg-technician-1.jpg",
+          "alt": "Técnico limpando unidade de ar-condicionado"
+        },
+        {
+          "title": "Ajuste de Performance",
+          "description": "Calibração para resfriamento mais rápido e menor consumo.",
+          "category": "Otimização",
+          "image": "/uploads/bg-technician-2.jpg",
+          "alt": "Profissional ajustando sistema de ar-condicionado"
+        },
+        {
+          "title": "Correção de Vazamento",
+          "description": "Diagnóstico e reparo seguro com testes de estanqueidade.",
+          "category": "Corretiva",
+          "image": "/uploads/bg-technician-3.jpg",
+          "alt": "Equipe técnica corrigindo vazamento em ar-condicionado"
+        }
+      ]
+    },
+    {
+      "slug": "gerador",
+      "title": "Manutenção de Gerador",
+      "description": "Garanta energia contínua com revisões estratégicas e reparos antes de falhas graves.",
+      "image": "/uploads/bg-technician-2.jpg",
+      "alt": "Equipe técnica em manutenção preventiva de gerador",
+      "topics": [
+        "Inspeção elétrica e mecânica do sistema",
+        "Teste de partida e operação sob carga",
+        "Troca de filtros, óleo e itens de desgaste",
+        "Ajuste de tensão e estabilidade operacional"
+      ],
+      "ctaText": "Quero revisão no gerador",
+      "gallery": [
+        {
+          "title": "Teste Sob Carga",
+          "description": "Validação de estabilidade elétrica em situação real.",
+          "category": "Preventiva",
+          "image": "/uploads/bg-technician-2.jpg",
+          "alt": "Técnico testando gerador sob carga"
+        },
+        {
+          "title": "Troca de Filtros",
+          "description": "Renovação de itens de desgaste para máxima confiabilidade.",
+          "category": "Preventiva",
+          "image": "/uploads/bg-technician-3.jpg",
+          "alt": "Equipe trocando filtros de gerador"
+        },
+        {
+          "title": "Ajuste de Tensão",
+          "description": "Configuração para operação estável e segura.",
+          "category": "Otimização",
+          "image": "/uploads/bg-technician-1.jpg",
+          "alt": "Profissional ajustando tensão em gerador"
+        }
+      ]
+    },
+    {
+      "slug": "eletrica",
+      "title": "Manutenção Elétrica",
+      "description": "Evite riscos e interrupções com inspeção profissional e correções seguras em instalações.",
+      "image": "/uploads/bg-technician-3.jpg",
+      "alt": "Profissional executando manutenção elétrica em painel",
+      "topics": [
+        "Inspeção de quadros e circuitos críticos",
+        "Correção de aquecimento em conexões",
+        "Identificação de fuga e oscilação de energia",
+        "Troca de disjuntores e componentes danificados"
+      ],
+      "ctaText": "Quero diagnóstico elétrico",
+      "gallery": [
+        {
+          "title": "Inspeção de Painel",
+          "description": "Verificação de aquecimento e desgaste em conexões críticas.",
+          "category": "Preventiva",
+          "image": "/uploads/bg-technician-3.jpg",
+          "alt": "Técnico inspecionando painel elétrico"
+        },
+        {
+          "title": "Correção de Fuga",
+          "description": "Localização e reparo para eliminar perdas elétricas.",
+          "category": "Corretiva",
+          "image": "/uploads/bg-technician-1.jpg",
+          "alt": "Profissional corrigindo fuga de energia"
+        },
+        {
+          "title": "Troca de Disjuntores",
+          "description": "Substituição segura de componentes danificados.",
+          "category": "Corretiva",
+          "image": "/uploads/bg-technician-2.jpg",
+          "alt": "Equipe trocando disjuntores"
+        }
+      ]
+    },
+    {
+      "slug": "hidraulica",
+      "title": "Manutenção Hidráulica",
+      "description": "Resolva vazamentos e perdas de pressão com diagnóstico rápido e reparo duradouro.",
+      "image": "/uploads/bg-technician-1.jpg",
+      "alt": "Técnico realizando manutenção hidráulica em tubulação",
+      "topics": [
+        "Detecção e reparo de vazamentos ocultos",
+        "Correção de baixa pressão em pontos de água",
+        "Troca de registros, válvulas e conexões",
+        "Manutenção de tubulações e prumadas"
+      ],
+      "ctaText": "Quero suporte hidráulico",
+      "gallery": [
+        {
+          "title": "Detecção de Vazamento",
+          "description": "Inspeção rápida para localizar perdas ocultas.",
+          "category": "Diagnóstico",
+          "image": "/uploads/bg-technician-1.jpg",
+          "alt": "Técnico localizando vazamento em tubulação"
+        },
+        {
+          "title": "Reparo de Tubulação",
+          "description": "Correção de danos com vedação duradoura.",
+          "category": "Corretiva",
+          "image": "/uploads/bg-technician-2.jpg",
+          "alt": "Equipe reparando tubulação hidráulica"
+        },
+        {
+          "title": "Ajuste de Pressão",
+          "description": "Regulagem para melhor desempenho nos pontos de água.",
+          "category": "Otimização",
+          "image": "/uploads/bg-technician-3.jpg",
+          "alt": "Profissional ajustando pressão hidráulica"
+        }
+      ]
+    }
+  ]
+}

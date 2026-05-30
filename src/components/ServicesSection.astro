@@ -1,57 +1,43 @@
 ---
 import { AirVent, ShieldCheck, Drill, Flame } from "lucide-react";
+import { siteContent } from "../lib/cms";
 
-const services = [
-  {
-    title: "Manutenção de Ar-Condicionado",
-    desc: "Limpeza técnica, ajustes de performance e reparos para manter o sistema eficiente.",
-    Icon: AirVent,
-    href: "/servicos/ar-condicionado",
-  },
-  {
-    title: "Manutenção de Gerador",
-    desc: "Revisão preventiva, testes de carga e correções para evitar paradas inesperadas.",
-    Icon: Flame,
-    href: "/servicos/gerador",
-  },
-  {
-    title: "Manutenção Elétrica",
-    desc: "Diagnóstico de falhas, ajustes de segurança e reparos em circuitos e painéis.",
-    Icon: ShieldCheck,
-    href: "/servicos/eletrica",
-  },
-  {
-    title: "Manutenção Hidráulica",
-    desc: "Correção de vazamentos, revisão de pressão e manutenção em tubulações e conexões.",
-    Icon: Drill,
-    href: "/servicos/hidraulica",
-  },
-];
+const section = siteContent.home.iconServices;
+const iconMap = {
+  AirVent,
+  Flame,
+  ShieldCheck,
+  Drill,
+};
 ---
 
-<section
-  id="servicos"
-  class="mx-auto flex w-full max-w-295 flex-col px-4 py-6 sm:px-6 lg:px-10"
-  data-reveal
->
+{
+  section.enabled && (
+    <section
+      id="servicos"
+      class="mx-auto flex w-full max-w-295 flex-col px-4 py-6 sm:px-6 lg:px-10"
+      data-reveal
+    >
   <h2
     class="text-center font-display text-h2 font-bold text-text-strong"
     data-reveal
     data-reveal-delay="1"
   >
-    Nossos serviços estão te esperando
+    {section.title}
   </h2>
 
   <div class="mt-7 flex flex-wrap justify-center gap-4">
     {
-      services.map((item) => (
+      section.cards.map((item) => {
+        const Icon = iconMap[item.icon as keyof typeof iconMap] ?? AirVent;
+        return (
         <a
           href={item.href}
           class="group block w-full max-w-90 flex-1 sm:min-w-77.5"
         >
           <article class="flex min-h-29 items-start gap-3 rounded-md border border-border-soft bg-bg-surface p-4 shadow-soft transition-all duration-200 group-hover:-translate-y-0.5 group-hover:border-secondary/35">
             <span class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-sm bg-[#F8F8F9] text-lg">
-              <item.Icon className="h-5 w-5 text-text-strong" />
+              <Icon className="h-5 w-5 text-text-strong" />
             </span>
             <div class="flex flex-col">
               <h3 class="text-[1.05rem] font-semibold text-text-strong">
@@ -63,7 +49,10 @@ const services = [
             </div>
           </article>
         </a>
-      ))
+        );
+      })
     }
   </div>
 </section>
+  )
+}

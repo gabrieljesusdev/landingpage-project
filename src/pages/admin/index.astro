@@ -1,0 +1,45 @@
+---
+---
+
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base href="/admin/" />
+    <title>CMS | Entrans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/admin/cms.css" />
+  </head>
+  <body>
+    <div class="cms-shell-bg" aria-hidden="true"></div>
+    <div id="cms-health" class="cms-health" hidden>
+      <strong>CMS offline</strong>
+      <p>Rode: pnpm cms:proxy</p>
+    </div>
+    <script is:inline>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script is:inline>
+      (async () => {
+        const el = document.getElementById("cms-health");
+        try {
+          const response = await fetch("http://localhost:49160/api/v1", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ action: "info" }),
+          });
+          if (!response.ok) throw new Error("proxy-offline");
+        } catch {
+          if (el) el.hidden = false;
+        }
+      })();
+    </script>
+    <script is:inline src="https://unpkg.com/decap-cms@^3.5.0/dist/decap-cms.js"></script>
+    <script is:inline src="/admin/cms-init.js"></script>
+  </body>
+</html>

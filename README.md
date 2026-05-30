@@ -1,46 +1,50 @@
-# Astro Starter Kit: Basics
+# Landing Page Entrans + CMS
 
-```sh
-pnpm create astro@latest -- --template basics
+Landing page Astro com CMS open source (Decap CMS) para editar:
+
+- textos
+- imagens
+- cores
+- cards e listas
+- seções exibidas/ocultas
+
+## Rodar projeto
+
+```bash
+pnpm install
+pnpm dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Site: http://localhost:4321
 
-## 🚀 Project Structure
+## Rodar CMS local (gratis)
 
-Inside of your Astro project, you'll see the following folders and files:
+Em outro terminal:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+pnpm cms:proxy
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Painel CMS: http://localhost:4321/admin
 
-## 🧞 Commands
+## Onde o CMS salva
 
-All commands are run from the root of the project, from a terminal:
+- Conteudo completo: src/data/site.json
+- Imagens enviadas: public/uploads
+- Config painel CMS: public/admin/config.yml
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## Como editar tudo
 
-## 👀 Want to learn more?
+No painel /admin voce pode:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- trocar textos globais e SEO
+- trocar paleta de cores
+- mudar fontes
+- adicionar/remover cards
+- editar hero, servicos, avaliacoes, mapa e rodape
+- editar cards e galerias da pagina de servicos
+
+## Observacao deploy
+
+Configuracao atual usa local_backend para editar localmente de forma gratuita.
+Para edicao online por equipe, conecte backend Git (GitHub/Netlify).

@@ -1,15 +1,31 @@
 ---
 import "../styles/globals.css";
+import { siteContent } from "../lib/cms";
 
 const {
-  title = "Entrans | Conserto de ar-condicionado com resposta rápida",
-  description =
-    "Entrans é especializada em conserto e manutenção de ar-condicionado, com atendimento rápido, diagnóstico preciso e serviço confiável para residências e empresas.",
-  keywords =
-    "conserto de ar-condicionado, manutenção de ar-condicionado, assistência técnica ar-condicionado, técnico de ar-condicionado, reparo de ar-condicionado, Entrans"
+  title = siteContent.seo.defaultTitle,
+  description = siteContent.seo.defaultDescription,
+  keywords = siteContent.seo.keywords
 } = Astro.props;
 
 const pageTitle = `${title}`;
+const theme = siteContent.theme;
+const bodyStyle = `
+  --cms-primary: ${theme.primary};
+  --cms-secondary: ${theme.secondary};
+  --cms-bg-page: ${theme.bgPage};
+  --cms-bg-surface: ${theme.bgSurface};
+  --cms-text-strong: ${theme.textStrong};
+  --cms-text-body: ${theme.textBody};
+  --cms-text-soft: ${theme.textSoft};
+  --cms-footer: ${theme.footer};
+  --cms-danger: ${theme.danger};
+  --cms-success: ${theme.success};
+  --cms-star: ${theme.star};
+  --cms-border-soft: ${theme.borderSoft};
+  --cms-font-sans: "${theme.fontSans}";
+  --cms-font-display: "${theme.fontDisplay}";
+`;
 ---
 
 <!doctype html>
@@ -41,7 +57,7 @@ const pageTitle = `${title}`;
     <meta name="twitter:image" content="/og-image.jpg" />
     <title>{pageTitle}</title>
   </head>
-  <body class="font-sans">
+  <body class="font-sans" style={bodyStyle}>
     <slot />
 
     <script type="application/ld+json" is:inline>

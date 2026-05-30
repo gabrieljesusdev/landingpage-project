@@ -1,0 +1,223 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: content
+    label: Conteudo do Site
+    files:
+      - name: site
+        label: Configuracao Global
+        file: src/data/site.json
+        format: json
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - { label: Titulo padrao, name: defaultTitle, widget: string }
+              - { label: Descricao padrao, name: defaultDescription, widget: text }
+              - { label: Keywords, name: keywords, widget: text }
+
+          - label: Tema
+            name: theme
+            widget: object
+            fields:
+              - { label: Cor primaria, name: primary, widget: color }
+              - { label: Cor secundaria, name: secondary, widget: color }
+              - { label: Fundo pagina, name: bgPage, widget: color }
+              - { label: Fundo superficie, name: bgSurface, widget: color }
+              - { label: Texto forte, name: textStrong, widget: color }
+              - { label: Texto corpo, name: textBody, widget: color }
+              - { label: Texto suave, name: textSoft, widget: color }
+              - { label: Cor rodape, name: footer, widget: color }
+              - { label: Cor perigo, name: danger, widget: color }
+              - { label: Cor sucesso, name: success, widget: color }
+              - { label: Cor estrela, name: star, widget: color }
+              - { label: Cor borda suave, name: borderSoft, widget: color }
+              - { label: Fonte base (Google font), name: fontSans, widget: string }
+              - { label: Fonte destaque (Google font), name: fontDisplay, widget: string }
+
+          - label: Marca
+            name: brand
+            widget: object
+            fields:
+              - { label: Nome da marca, name: name, widget: string }
+              - { label: WhatsApp (formato internacional), name: whatsappNumber, widget: string }
+
+          - label: Navbar
+            name: navbar
+            widget: object
+            fields:
+              - { label: Exibir navbar, name: enabled, widget: boolean, default: true }
+              - label: Links menu
+                name: links
+                widget: list
+                fields:
+                  - { label: Rotulo, name: label, widget: string }
+                  - { label: Link, name: href, widget: string }
+              - { label: Texto botao, name: ctaText, widget: string }
+              - { label: Mensagem CTA WhatsApp, name: ctaMessage, widget: text }
+
+          - label: Home
+            name: home
+            widget: object
+            fields:
+              - label: Hero
+                name: hero
+                widget: object
+                fields:
+                  - { label: Exibir hero, name: enabled, widget: boolean, default: true }
+                  - label: Slides
+                    name: slides
+                    widget: list
+                    fields:
+                      - { label: Imagem, name: image, widget: image }
+                      - { label: ALT da imagem, name: alt, widget: string }
+                  - { label: Titulo, name: title, widget: text }
+                  - { label: Subtitulo, name: subtitle, widget: text }
+                  - { label: Texto botao, name: ctaText, widget: string }
+                  - { label: Mensagem CTA WhatsApp, name: ctaMessage, widget: text }
+                  - label: Destaques
+                    name: stats
+                    widget: list
+                    field: { label: Texto, name: text, widget: string }
+
+              - label: Vitrine de servicos
+                name: servicesShowcase
+                widget: object
+                fields:
+                  - { label: Exibir secao, name: enabled, widget: boolean, default: true }
+                  - { label: Selo, name: label, widget: string }
+                  - { label: Titulo, name: title, widget: text }
+                  - label: Cards
+                    name: cards
+                    widget: list
+                    fields:
+                      - { label: Titulo, name: title, widget: string }
+                      - { label: Descricao, name: description, widget: text }
+                      - { label: Imagem, name: image, widget: image }
+                      - { label: ALT imagem, name: alt, widget: string }
+                      - { label: Link do card, name: href, widget: string }
+
+              - label: Servicos com icones
+                name: iconServices
+                widget: object
+                fields:
+                  - { label: Exibir secao, name: enabled, widget: boolean, default: true }
+                  - { label: Titulo, name: title, widget: text }
+                  - label: Cards
+                    name: cards
+                    widget: list
+                    fields:
+                      - { label: Titulo, name: title, widget: string }
+                      - { label: Descricao, name: desc, widget: text }
+                      - label: Icone
+                        name: icon
+                        widget: select
+                        options:
+                          - AirVent
+                          - Flame
+                          - ShieldCheck
+                          - Drill
+                      - { label: Link do card, name: href, widget: string }
+
+              - label: Avaliacoes
+                name: testimonials
+                widget: object
+                fields:
+                  - { label: Exibir secao, name: enabled, widget: boolean, default: true }
+                  - { label: Titulo, name: title, widget: string }
+                  - { label: Destaque, name: highlight, widget: string }
+                  - { label: Texto avaliacao, name: ratingText, widget: string }
+                  - { label: Texto acima CTA, name: preCtaText, widget: string }
+                  - { label: Texto botao CTA, name: ctaText, widget: string }
+                  - { label: Mensagem CTA WhatsApp, name: ctaMessage, widget: text }
+                  - { label: Texto inferior, name: bottomText, widget: text }
+                  - label: Cards de avaliacao
+                    name: items
+                    widget: list
+                    fields:
+                      - { label: Nome, name: name, widget: string }
+                      - { label: Texto, name: text, widget: text }
+                      - { label: Avatar URL, name: avatar, widget: string }
+
+              - label: Mapa
+                name: map
+                widget: object
+                fields:
+                  - { label: Exibir secao, name: enabled, widget: boolean, default: true }
+                  - { label: Titulo, name: title, widget: string }
+                  - { label: Rotulo WhatsApp, name: whatsappLabel, widget: string }
+                  - { label: Telefone exibido, name: phoneText, widget: string }
+                  - { label: Query Google Maps, name: mapsQuery, widget: string }
+                  - { label: URL Embed Mapa, name: mapEmbedUrl, widget: string }
+                  - label: Cidades
+                    name: cities
+                    widget: list
+                    fields:
+                      - { label: Nome da cidade, name: name, widget: string }
+                      - { label: Classe marcador Tailwind, name: markerClass, widget: string }
+
+          - label: Rodape
+            name: footer
+            widget: object
+            fields:
+              - { label: Exibir rodape, name: enabled, widget: boolean, default: true }
+              - { label: Copyright, name: copyright, widget: string }
+              - { label: Rotulo localizacao, name: locationLabel, widget: string }
+              - { label: Texto localizacao, name: locationText, widget: string }
+              - { label: Rotulo horario, name: hoursLabel, widget: string }
+              - { label: Texto horario, name: hoursText, widget: string }
+              - { label: Rotulo telefone, name: phoneLabel, widget: string }
+              - { label: Texto telefone, name: phoneText, widget: string }
+
+          - label: Pagina servicos
+            name: servicesPage
+            widget: object
+            fields:
+              - { label: Titulo SEO, name: title, widget: string }
+              - { label: Descricao SEO, name: description, widget: text }
+              - { label: Selo, name: badge, widget: string }
+              - { label: Heading, name: heading, widget: string }
+              - { label: Introducao, name: intro, widget: text }
+              - { label: Texto voltar, name: backText, widget: string }
+              - label: Cards da pagina
+                name: cards
+                widget: list
+                fields:
+                  - { label: Titulo, name: title, widget: string }
+                  - { label: Link, name: href, widget: string }
+                  - { label: Imagem, name: image, widget: image }
+                  - { label: ALT imagem, name: alt, widget: string }
+                  - { label: Descricao, name: description, widget: text }
+
+          - label: Detalhe por servico
+            name: serviceDetails
+            widget: list
+            summary: "{{fields.title}} ({{fields.slug}})"
+            fields:
+              - { label: Slug, name: slug, widget: string }
+              - { label: Titulo, name: title, widget: string }
+              - { label: Descricao, name: description, widget: text }
+              - { label: Imagem principal, name: image, widget: image }
+              - { label: ALT principal, name: alt, widget: string }
+              - label: Topicos
+                name: topics
+                widget: list
+                field: { label: Topico, name: topic, widget: string }
+              - { label: Texto CTA, name: ctaText, widget: string }
+              - label: Galeria
+                name: gallery
+                widget: list
+                fields:
+                  - { label: Titulo, name: title, widget: string }
+                  - { label: Descricao, name: description, widget: text }
+                  - { label: Categoria, name: category, widget: string }
+                  - { label: Imagem, name: image, widget: image }
+                  - { label: ALT imagem, name: alt, widget: string }

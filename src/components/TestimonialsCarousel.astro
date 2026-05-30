@@ -1,54 +1,32 @@
 ---
 import { Star } from "lucide-react";
+import { siteContent, whatsappHref } from "../lib/cms";
 
-const testimonials = [
-  {
-    name: "Gabriel Jesus",
-    text: "Atendimento rápido e resolveu no mesmo dia.",
-    avatar: "https://i.pravatar.cc/80?img=11",
-  },
-  {
-    name: "Rui Carlos",
-    text: "Atendimento rápido e resolveu no mesmo dia.",
-    avatar: "https://i.pravatar.cc/80?img=15",
-  },
-  {
-    name: "Cássia E.",
-    text: "Ótimo custo-benefício e atendimento super educado.",
-    avatar: "https://i.pravatar.cc/80?img=32",
-  },
-  {
-    name: "Maria N.",
-    text: "Chegaram no horário e deixaram tudo limpo.",
-    avatar: "https://i.pravatar.cc/80?img=48",
-  },
-  {
-    name: "André P.",
-    text: "Preço justo e técnico muito transparente.",
-    avatar: "https://i.pravatar.cc/80?img=53",
-  },
-];
+const section = siteContent.home.testimonials;
+const testimonials = section.items;
 
 const slides = [...testimonials, ...testimonials];
 ---
 
-<section
-  class="mx-auto flex w-full max-w-[1180px] flex-col px-4 py-8 sm:px-6 lg:px-10"
-  data-reveal
->
+{
+  section.enabled && (
+    <section
+      class="mx-auto flex w-full max-w-[1180px] flex-col px-4 py-8 sm:px-6 lg:px-10"
+      data-reveal
+    >
   <div class="flex flex-wrap items-center gap-3">
     <h2
       class="font-display text-h2 font-bold text-text-strong"
       data-reveal
       data-reveal-delay="1"
     >
-      O que falam de nós?
+      {section.title}
     </h2>
     <span class="text-sm font-medium text-secondary"
-      >+1000 clientes atendidos</span
+      >{section.highlight}</span
     >
     <span class="flex items-center gap-1 text-sm text-star">
-      <Star className="h-4 w-4 fill-current" /> 5 estrelas no Google
+      <Star className="h-4 w-4 fill-current" /> {section.ratingText}
     </span>
   </div>
 
@@ -91,26 +69,25 @@ const slides = [...testimonials, ...testimonials];
 
   <div class="mt-9 flex flex-col items-center text-center">
     <p class="text-sm text-text-soft" data-reveal data-reveal-delay="2">
-      não espere mais tempo
+      {section.preCtaText}
     </p>
     <a
-      href="https://wa.me/5511930416535?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20fazer%20um%20or%C3%A7amento%20gratuito."
+      href={whatsappHref(section.ctaMessage)}
       target="_blank"
       rel="noopener noreferrer"
       class="mt-3 rounded-pill bg-secondary px-8 py-3 text-base font-semibold text-white shadow-button transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
       data-reveal
       data-reveal-delay="3"
     >
-      Fazer orçamento gratuito
+      {section.ctaText}
     </a>
     <p class="mt-4 text-sm text-text-body">
-      atendimento rápido &nbsp; qualidade &nbsp; segurança
-      <span class="font-semibold text-secondary"
-        >&nbsp; é nossa prioridade.</span
-      >
+      {section.bottomText}
     </p>
   </div>
 </section>
+  )
+}
 
 <style>
   .carousel-mask {
