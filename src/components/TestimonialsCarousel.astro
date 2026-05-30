@@ -73,7 +73,10 @@ const slides = [...testimonials, ...testimonials];
           href={whatsappHref(section.ctaMessage)}
           target="_blank"
           rel="noopener noreferrer"
-          class="flex flex-row gap-2 mt-3 rounded-pill bg-emerald-500 px-8 py-3 text-base font-semibold text-white shadow-[0_10px_24px_rgba(16,185,129,0.36)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
+          aria-label="Agende uma visita Técnica"
+          data-cta-open-modal
+          data-redirect-url={whatsappHref(section.ctaMessage)}
+          class="flex flex-row gap-2 pointer-events-auto mt-7 rounded-pill bg-emerald-500 px-7 py-3 text-base font-semibold text-white shadow-[0_10px_24px_rgba(16,185,129,0.36)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
           data-reveal
           data-reveal-delay="3"
         >
