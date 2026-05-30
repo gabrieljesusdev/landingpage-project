@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteNavbar from "../components/SiteNavbar.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ServicesProvidedSection from "../components/ProblemsSection.astro";
+import TestimonialsCarousel from "../components/TestimonialsCarousel.astro";
+import MapSection from "../components/MapSection.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+
+<Layout>
+  <SiteNavbar />
+  <main class="flex w-full flex-col">
+    <HeroSection />
+    <ServicesProvidedSection />
+    <TestimonialsCarousel />
+    <MapSection />
+  </main>
+  <SiteFooter />
+</Layout>

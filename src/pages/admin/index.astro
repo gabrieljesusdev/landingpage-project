@@ -1,47 +1,89 @@
 ---
-
+const storyblokSpaceId = import.meta.env.STORYBLOK_SPACE_ID ?? "292836113300310";
+const storyblokStoryId = 182130388001213;
+const dashboardUrl = storyblokSpaceId
+  ? `https://app.storyblok.com/#/me/spaces/${storyblokSpaceId}/stories/${storyblokStoryId}`
+  : "https://app.storyblok.com";
 ---
 
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <base href="/admin/" />
-    <title>CMS | Entrans</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/admin/cms.css" />
+    <title>CMS Storyblok | Entrans</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        background: linear-gradient(135deg, #f4f4f5, #eef5fb);
+        font-family: Poppins, system-ui, sans-serif;
+      }
+
+      main {
+        width: min(46rem, 100%);
+        background: #ffffff;
+        border: 1px solid #e9e9eb;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 16px 32px rgba(12, 18, 28, 0.08);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.3rem;
+      }
+
+      p {
+        margin: 0.75rem 0 0;
+        color: #454045;
+        line-height: 1.5;
+      }
+
+      a {
+        margin-top: 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: #f17432;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.75rem 1rem;
+      }
+
+      code {
+        background: #f5f5f6;
+        border-radius: 0.4rem;
+        padding: 0.05rem 0.35rem;
+      }
+    </style>
   </head>
   <body>
-    <div class="cms-shell-bg" aria-hidden="true"></div>
-    <div id="cms-health" class="cms-health" hidden>
-      <strong>CMS offline</strong>
-      <p>Rode: pnpm cms:proxy</p>
-    </div>
-    <script is:inline>
-      window.CMS_MANUAL_INIT = true;
-    </script>
-    <script is:inline>
-      (async () => {
-        const el = document.getElementById("cms-health");
-        try {
-          const response = await fetch("http://localhost:49160/api/v1", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ action: "info" }),
-          });
-          if (!response.ok) throw new Error("proxy-offline");
-        } catch {
-          if (el) el.hidden = false;
-        }
-      })();
-    </script>
-    <script is:inline src="https://unpkg.com/decap-cms@^3.5.0/dist/decap-cms.js"
-    ></script>
-    <script is:inline src="/admin/cms-init.js"></script>
+    <main>
+      <h1>CMS migrado para Storyblok</h1>
+      <p>
+        O painel local do Decap foi removido. O gerenciamento agora acontece no
+        Storyblok.
+      </p>
+      <p>
+        {storyblokSpaceId
+          ? `Space ativo: ${storyblokSpaceId}`
+          : "Defina STORYBLOK_SPACE_ID no .env para abrir direto no seu space."}
+      </p>
+      <a href={dashboardUrl} target="_blank" rel="noopener noreferrer">
+        Abrir editor do site
+      </a>
+      <p>
+        Token usado pelo site: <code>STORYBLOK_PREVIEW_TOKEN</code>.
+      </p>
+    </main>
   </body>
 </html>

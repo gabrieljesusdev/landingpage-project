@@ -1,12 +1,6 @@
-# Landing Page Entrans + CMS
+# Landing Page Entrans + Storyblok
 
-Landing page Astro com CMS open source (Decap CMS) para editar:
-
-- textos
-- imagens
-- cores
-- cards e listas
-- seções exibidas/ocultas
+Landing page Astro com CMS no Storyblok.
 
 ## Rodar projeto
 
@@ -15,36 +9,36 @@ pnpm install
 pnpm dev
 ```
 
-Site: http://localhost:4321
+Site local: http://localhost:4321
 
-## Rodar CMS local (gratis)
+## Variaveis de ambiente
 
-Em outro terminal:
+Crie um arquivo `.env` com:
 
 ```bash
-pnpm cms:proxy
+STORYBLOK_PREVIEW_TOKEN=seu_token_preview
+STORYBLOK_SPACE_ID=123456
+STORYBLOK_REGION=eu
+STORYBLOK_CONTENT_SLUG=site
 ```
 
-Painel CMS: http://localhost:4321/admin
+## Painel CMS
 
-## Onde o CMS salva
+- Atalho local: http://localhost:4321/admin
+- O atalho abre o painel do Storyblok.
 
-- Conteudo completo: src/data/site.json
-- Imagens enviadas: public/uploads
-- Config painel CMS: public/admin/config.yml
+## Modelo de conteudo usado pelo site
 
-## Como editar tudo
+O site espera um story no slug `site` com um destes formatos:
 
-No painel /admin voce pode:
+- Campo `site_json` (string JSON completa).
+- Campo `data` (objeto completo do site).
+- Conteudo raiz ja no formato de `src/data/site.json`.
 
-- trocar textos globais e SEO
-- trocar paleta de cores
-- mudar fontes
-- adicionar/remover cards
-- editar hero, servicos, avaliacoes, mapa e rodape
-- editar cards e galerias da pagina de servicos
+Sem token ou com erro no Storyblok, o site usa fallback local em `src/data/site.json`.
 
-## Observacao deploy
+## Migracao concluida
 
-Configuracao atual usa local_backend para editar localmente de forma gratuita.
-Para edicao online por equipe, conecte backend Git (GitHub/Netlify).
+- Decap CMS removido do projeto.
+- Proxy `decap-server` removido.
+- Pagina `/admin` convertida para entrada do Storyblok.
