@@ -1,6 +1,7 @@
 ---
 import "../styles/globals.css";
 import { siteContent } from "../lib/cms";
+import CtaRedirectModal from "../components/CtaRedirectModal.astro";
 
 const {
   title = siteContent.seo.defaultTitle,
@@ -59,6 +60,7 @@ const bodyStyle = `
   </head>
   <body class="font-sans" style={bodyStyle}>
     <slot />
+    <CtaRedirectModal />
 
     <script type="application/ld+json" is:inline>
       {JSON.stringify({
