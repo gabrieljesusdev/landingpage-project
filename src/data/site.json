@@ -32,8 +32,8 @@
       { "label": "Contato", "href": "/#contato" },
       { "label": "Cidades que atendemos", "href": "/#mapa" }
     ],
-    "ctaText": "Falar com um Especialista",
-    "ctaMessage": "Olá, quero falar com um especialista em ar-condicionado."
+    "ctaText": "Agendar com um especialista",
+    "ctaMessage": "Olá, quero agendar com um especialista."
   },
   "home": {
     "hero": {
