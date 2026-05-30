@@ -1,0 +1,532 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SiteNavbar from "../../components/SiteNavbar.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import technician1 from "../../assets/bg-technician-1.jpg";
+import technician2 from "../../assets/bg-technician-2.jpg";
+import technician3 from "../../assets/bg-technician-3.jpg";
+
+type ServiceDetail = {
+  slug: string;
+  title: string;
+  description: string;
+  image: { src: string };
+  alt: string;
+  topics: string[];
+  ctaText: string;
+};
+
+type GalleryItem = {
+  title: string;
+  description: string;
+  category: string;
+  image: { src: string };
+  alt: string;
+};
+
+export function getStaticPaths() {
+  const services: ServiceDetail[] = [
+    {
+      slug: "ar-condicionado",
+      title: "Manutenção de Ar Condicionado",
+      description:
+        "Aumente a vida útil do equipamento, reduza consumo e evite panes em dias críticos.",
+      image: technician1,
+      alt: "Técnico realizando manutenção completa em ar-condicionado",
+      topics: [
+        "Limpeza técnica de evaporadora e condensadora",
+        "Higienização para melhorar qualidade do ar",
+        "Manutenção preventiva com checklist completo",
+        "Correção de vazamento de gás e recarga segura",
+        "Troca de capacitor, sensor e peças críticas",
+        "Ajuste de performance para gelar mais rápido",
+        "Diagnóstico de ruído, oscilação e mau cheiro",
+        "Atendimento para residencial e comercial",
+      ],
+      ctaText: "Quero orçamento para meu ar-condicionado",
+    },
+    {
+      slug: "gerador",
+      title: "Manutenção de Gerador",
+      description:
+        "Garanta energia contínua com revisões estratégicas e reparos antes de falhas graves.",
+      image: technician2,
+      alt: "Equipe técnica em manutenção preventiva de gerador",
+      topics: [
+        "Inspeção elétrica e mecânica do sistema",
+        "Teste de partida e operação sob carga",
+        "Troca de filtros, óleo e itens de desgaste",
+        "Ajuste de tensão e estabilidade operacional",
+        "Verificação do sistema de arrefecimento",
+        "Diagnóstico de ruídos e superaquecimento",
+        "Plano preventivo para reduzir tempo parado",
+        "Relatório técnico com recomendações práticas",
+      ],
+      ctaText: "Quero revisão no gerador",
+    },
+    {
+      slug: "eletrica",
+      title: "Manutenção Elétrica",
+      description:
+        "Evite riscos e interrupções com inspeção profissional e correções seguras em instalações.",
+      image: technician3,
+      alt: "Profissional executando manutenção elétrica em painel",
+      topics: [
+        "Inspeção de quadros e circuitos críticos",
+        "Correção de aquecimento em conexões",
+        "Identificação de fuga e oscilação de energia",
+        "Troca de disjuntores e componentes danificados",
+        "Organização e adequação de painéis elétricos",
+        "Testes de segurança e continuidade",
+        "Ajustes para reduzir queda e pico de tensão",
+        "Atendimento técnico para empresa e residência",
+      ],
+      ctaText: "Quero diagnóstico elétrico",
+    },
+    {
+      slug: "hidraulica",
+      title: "Manutenção Hidráulica",
+      description:
+        "Resolva vazamentos e perdas de pressão com diagnóstico rápido e reparo duradouro.",
+      image: technician1,
+      alt: "Técnico realizando manutenção hidráulica em tubulação",
+      topics: [
+        "Detecção e reparo de vazamentos ocultos",
+        "Correção de baixa pressão em pontos de água",
+        "Troca de registros, válvulas e conexões",
+        "Manutenção de tubulações e prumadas",
+        "Reparo de infiltrações em áreas críticas",
+        "Ajuste de vedação em pias e sanitários",
+        "Inspeção preventiva para evitar danos maiores",
+        "Atendimento rápido para emergências",
+      ],
+      ctaText: "Quero suporte hidráulico",
+    },
+  ];
+
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props as { service: ServiceDetail };
+
+const galleryByService: Record<string, GalleryItem[]> = {
+  "ar-condicionado": [
+    {
+      title: "Limpeza Técnica Completa",
+      description:
+        "Higienização interna para melhorar desempenho e qualidade do ar.",
+      category: "Preventiva",
+      image: technician1,
+      alt: "Técnico limpando unidade de ar-condicionado",
+    },
+    {
+      title: "Ajuste de Performance",
+      description: "Calibração para resfriamento mais rápido e menor consumo.",
+      category: "Otimização",
+      image: technician2,
+      alt: "Profissional ajustando sistema de ar-condicionado",
+    },
+    {
+      title: "Correção de Vazamento",
+      description: "Diagnóstico e reparo seguro com testes de estanqueidade.",
+      category: "Corretiva",
+      image: technician3,
+      alt: "Equipe técnica corrigindo vazamento em ar-condicionado",
+    },
+    {
+      title: "Troca de Componentes",
+      description: "Substituição de capacitor e sensor com peças confiáveis.",
+      category: "Corretiva",
+      image: technician1,
+      alt: "Técnico realizando troca de componentes",
+    },
+    {
+      title: "Plano de Revisão",
+      description:
+        "Checklist preventivo para reduzir falhas em períodos críticos.",
+      category: "Preventiva",
+      image: technician2,
+      alt: "Especialista realizando checklist de manutenção",
+    },
+    {
+      title: "Avaliação de Ruído",
+      description:
+        "Inspeção detalhada para eliminar vibração e barulhos anormais.",
+      category: "Diagnóstico",
+      image: technician3,
+      alt: "Profissional analisando ruído em equipamento",
+    },
+  ],
+  gerador: [
+    {
+      title: "Teste Sob Carga",
+      description: "Validação de estabilidade elétrica em situação real.",
+      category: "Preventiva",
+      image: technician2,
+      alt: "Técnico testando gerador sob carga",
+    },
+    {
+      title: "Troca de Filtros",
+      description: "Renovação de itens de desgaste para máxima confiabilidade.",
+      category: "Preventiva",
+      image: technician3,
+      alt: "Equipe trocando filtros de gerador",
+    },
+    {
+      title: "Ajuste de Tensão",
+      description: "Configuração para operação estável e segura.",
+      category: "Otimização",
+      image: technician1,
+      alt: "Profissional ajustando tensão em gerador",
+    },
+    {
+      title: "Reparo de Partida",
+      description: "Correção de falhas de acionamento e resposta lenta.",
+      category: "Corretiva",
+      image: technician2,
+      alt: "Técnico reparando sistema de partida",
+    },
+    {
+      title: "Inspeção de Arrefecimento",
+      description: "Checagem completa para evitar superaquecimento.",
+      category: "Diagnóstico",
+      image: technician3,
+      alt: "Inspeção no sistema de arrefecimento de gerador",
+    },
+    {
+      title: "Relatório Técnico",
+      description: "Registro com recomendações para reduzir tempo parado.",
+      category: "Diagnóstico",
+      image: technician1,
+      alt: "Especialista preparando relatório técnico",
+    },
+  ],
+  eletrica: [
+    {
+      title: "Inspeção de Painel",
+      description:
+        "Verificação de aquecimento e desgaste em conexões críticas.",
+      category: "Preventiva",
+      image: technician3,
+      alt: "Técnico inspecionando painel elétrico",
+    },
+    {
+      title: "Correção de Fuga",
+      description: "Localização e reparo para eliminar perdas elétricas.",
+      category: "Corretiva",
+      image: technician1,
+      alt: "Profissional corrigindo fuga de energia",
+    },
+    {
+      title: "Troca de Disjuntores",
+      description: "Substituição segura de componentes danificados.",
+      category: "Corretiva",
+      image: technician2,
+      alt: "Equipe trocando disjuntores",
+    },
+    {
+      title: "Adequação de Quadro",
+      description: "Organização técnica para maior segurança operacional.",
+      category: "Otimização",
+      image: technician3,
+      alt: "Quadro elétrico sendo organizado por técnico",
+    },
+    {
+      title: "Teste de Continuidade",
+      description: "Medições para validar confiabilidade dos circuitos.",
+      category: "Diagnóstico",
+      image: technician1,
+      alt: "Especialista realizando testes elétricos",
+    },
+    {
+      title: "Ajuste de Tensão",
+      description: "Intervenções para reduzir pico e oscilação.",
+      category: "Otimização",
+      image: technician2,
+      alt: "Ajuste técnico em sistema elétrico",
+    },
+  ],
+  hidraulica: [
+    {
+      title: "Detecção de Vazamento",
+      description: "Inspeção rápida para localizar perdas ocultas.",
+      category: "Diagnóstico",
+      image: technician1,
+      alt: "Técnico localizando vazamento em tubulação",
+    },
+    {
+      title: "Reparo de Tubulação",
+      description: "Correção de danos com vedação duradoura.",
+      category: "Corretiva",
+      image: technician2,
+      alt: "Equipe reparando tubulação hidráulica",
+    },
+    {
+      title: "Ajuste de Pressão",
+      description: "Regulagem para melhor desempenho nos pontos de água.",
+      category: "Otimização",
+      image: technician3,
+      alt: "Profissional ajustando pressão hidráulica",
+    },
+    {
+      title: "Troca de Conexões",
+      description: "Substituição de válvulas e registros desgastados.",
+      category: "Corretiva",
+      image: technician1,
+      alt: "Técnico trocando conexões hidráulicas",
+    },
+    {
+      title: "Inspeção Preventiva",
+      description: "Checklist para evitar infiltrações e perdas futuras.",
+      category: "Preventiva",
+      image: technician2,
+      alt: "Inspeção preventiva em instalação hidráulica",
+    },
+    {
+      title: "Atendimento Emergencial",
+      description: "Suporte técnico rápido para incidentes críticos.",
+      category: "Emergencial",
+      image: technician3,
+      alt: "Atendimento emergencial em manutenção hidráulica",
+    },
+  ],
+};
+
+const galleryItems = galleryByService[service.slug] ?? [];
+const categories = [
+  "Todos",
+  ...new Set(galleryItems.map((item) => item.category)),
+];
+
+const whatsappMessage = encodeURIComponent(
+  `Olá, ${service.ctaText}. Quero falar com um especialista.`,
+);
+const whatsappHref = `https://wa.me/5511930416535?text=${whatsappMessage}`;
+---
+
+<Layout
+  title="Entrans | Serviços"
+  description="Veja os serviços oferecidos pela Entrans em manutenção de ar-condicionado, gerador, elétrica e hidráulica."
+>
+  <SiteNavbar />
+  <main
+    class="mx-auto flex w-full max-w-295 flex-col px-4 py-28 sm:px-6 lg:px-10"
+  >
+    <span class="w-fit rounded-pill py-1 text-sm font-semibold text-primary">
+      Serviços
+    </span>
+    <h1
+      class="mt-4 font-display text-h2 font-bold leading-[1.1] text-text-strong"
+    >
+      Galeria de {service.title}
+    </h1>
+    <p class="mt-3 max-w-2xl text-base leading-[1.45] text-text-body">
+      {service.description}
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-3" data-category-filters>
+      {
+        categories.map((category, index) => (
+          <button
+            type="button"
+            class:list={[
+              "category-chip rounded-sm px-6 py-2 text-sm font-semibold transition-all duration-200",
+              index === 0
+                ? "bg-secondary text-white"
+                : "bg-[#E9E9EB] text-text-strong hover:bg-[#DDDEE2]",
+            ]}
+            data-filter-btn
+            data-category={category}
+            aria-pressed={index === 0 ? "true" : "false"}
+          >
+            {category}
+          </button>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      data-gallery-grid
+    >
+      {
+        galleryItems.map((item) => (
+          <article
+            class="group"
+            data-gallery-card
+            data-category={item.category}
+          >
+            <div class="overflow-hidden rounded-md border border-border-soft bg-bg-surface shadow-soft">
+              <img
+                src={item.image.src}
+                alt={item.alt}
+                class="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+            </div>
+            <div class="mt-3 px-1">
+              <h2 class="text-[1.1rem] font-semibold leading-tight text-text-strong">
+                {item.title}
+              </h2>
+              <p class="mt-1 text-sm leading-[1.45] text-text-body">
+                {item.description}
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-6 hidden rounded-md border border-border-soft bg-bg-surface px-4 py-3 text-sm text-text-soft"
+      data-empty-state
+    >
+      Nenhum item nessa categoria.
+    </div>
+
+    <div class="mt-6 flex items-center gap-3" data-pagination>
+      <button
+        type="button"
+        class="rounded-pill border border-border-soft bg-bg-surface px-4 py-2 text-sm font-semibold text-text-strong transition-all duration-200 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
+        data-page-prev
+      >
+        Anterior
+      </button>
+      <span class="text-sm font-medium text-text-soft" data-page-info>
+        Página 1 de 1
+      </span>
+      <button
+        type="button"
+        class="rounded-pill border border-border-soft bg-bg-surface px-4 py-2 text-sm font-semibold text-text-strong transition-all duration-200 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
+        data-page-next
+      >
+        Próxima
+      </button>
+    </div>
+
+    <a
+      href={whatsappHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-8 inline-flex w-fit items-center rounded-pill bg-primary px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
+    >
+      {service.ctaText}
+    </a>
+
+    <a
+      href="/"
+      class="mt-4 inline-flex w-fit items-center rounded-pill border border-border-soft bg-bg-surface px-5 py-3 text-sm font-semibold text-text-strong transition-all duration-200 hover:-translate-y-0.5"
+    >
+      Voltar para o início
+    </a>
+  </main>
+  <SiteFooter />
+</Layout>
+
+<script>
+  const buttons = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-filter-btn]"),
+  );
+  const cards = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-gallery-card]"),
+  );
+  const emptyState = document.querySelector<HTMLElement>("[data-empty-state]");
+  const pagination = document.querySelector<HTMLElement>("[data-pagination]");
+  const pageInfo = document.querySelector<HTMLElement>("[data-page-info]");
+  const prevButton =
+    document.querySelector<HTMLButtonElement>("[data-page-prev]");
+  const nextButton =
+    document.querySelector<HTMLButtonElement>("[data-page-next]");
+
+  const CARDS_PER_PAGE = 3;
+  let activeCategory = "Todos";
+  let currentPage = 1;
+
+  const setActiveButton = (activeCategory: string) => {
+    buttons.forEach((button) => {
+      const isActive = button.dataset.category === activeCategory;
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      button.classList.toggle("bg-secondary", isActive);
+      button.classList.toggle("text-white", isActive);
+      button.classList.toggle("bg-[#E9E9EB]", !isActive);
+      button.classList.toggle("text-text-strong", !isActive);
+    });
+  };
+
+  const getFilteredCards = () => {
+    return cards.filter(
+      (card) =>
+        activeCategory === "Todos" || card.dataset.category === activeCategory,
+    );
+  };
+
+  const syncPagination = (totalItems: number) => {
+    const totalPages = Math.max(1, Math.ceil(totalItems / CARDS_PER_PAGE));
+    currentPage = Math.min(currentPage, totalPages);
+
+    if (pageInfo) {
+      pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
+    }
+
+    if (prevButton) {
+      prevButton.disabled = currentPage <= 1;
+    }
+
+    if (nextButton) {
+      nextButton.disabled = currentPage >= totalPages;
+    }
+
+    if (pagination) {
+      pagination.classList.toggle(
+        "hidden",
+        totalItems === 0 || totalPages <= 1,
+      );
+    }
+  };
+
+  const renderCards = () => {
+    const filteredCards = getFilteredCards();
+    const start = (currentPage - 1) * CARDS_PER_PAGE;
+    const end = start + CARDS_PER_PAGE;
+    const cardsInPage = filteredCards.slice(start, end);
+
+    cards.forEach((card) => {
+      card.classList.add("hidden");
+    });
+
+    cardsInPage.forEach((card) => {
+      card.classList.remove("hidden");
+    });
+
+    if (emptyState) {
+      emptyState.classList.toggle("hidden", filteredCards.length !== 0);
+    }
+
+    syncPagination(filteredCards.length);
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const category = button.dataset.category ?? "Todos";
+      activeCategory = category;
+      currentPage = 1;
+      setActiveButton(category);
+      renderCards();
+    });
+  });
+
+  prevButton?.addEventListener("click", () => {
+    currentPage -= 1;
+    renderCards();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    currentPage += 1;
+    renderCards();
+  });
+
+  renderCards();
+</script>

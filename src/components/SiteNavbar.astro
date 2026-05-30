@@ -1,28 +1,27 @@
-<header class="fixed inset-x-0 top-0 z-50">
+<header class="fixed bg-white inset-x-0 top-0 z-50">
   <div
-    class="mx-auto flex h-[74px] w-full md:max-w-[1180px] items-center justify-between px-4 sm:px-6 lg:px-10"
+    class="mx-auto flex h-12.5 w-full md:max-w-295 items-center justify-between px-4 sm:px-6 lg:px-10"
   >
-    <a href="#" class="font-display text-lg font-semibold text-white"
-      >Nome da Empresa</a
+    <a href="/" class="font-display text-lg font-semibold text-black">Entrans</a
     >
 
     <nav
-      class="hidden items-center gap-7 text-sm font-medium text-white/95 md:flex"
+      class="hidden items-center gap-7 text-sm font-medium text-black/95 md:flex"
     >
       <a
-        href="#inicio"
+        href="/#inicio"
         class="transition-colors duration-200 hover:text-primary">Início</a
       >
       <a
-        href="#servicos"
+        href="/#servicos"
         class="transition-colors duration-200 hover:text-primary">Serviços</a
       >
       <a
-        href="#contato"
+        href="/#contato"
         class="transition-colors duration-200 hover:text-primary">Contato</a
       >
-      <a href="#mapa" class="transition-colors duration-200 hover:text-primary"
-        >Abrir no mapa</a
+      <a href="/#mapa" class="transition-colors duration-200 hover:text-primary"
+        >Cidades que atendemos</a
       >
     </nav>
 
@@ -37,26 +36,20 @@
   </div>
 </header>
 
-<div
-  class="nav-blur-layer pointer-events-none fixed inset-x-0 top-0 z-40 h-[92px] backdrop-blur-[10px]"
-  aria-hidden="true"
->
-</div>
-
 <style>
-  header {
-    background: linear-gradient(
-      to bottom,
-      var(--nav-fill-top) 0%,
-      var(--nav-fill-mid) 52%,
-      var(--nav-fill-bottom) 100%
-    );
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.16); */
-    backdrop-filter: blur(var(--blur-navbar));
-    -webkit-backdrop-filter: blur(var(--blur-navbar));
-  }
+  /* header { */
+  /* background: linear-gradient( */
+  /* to bottom, */
+  /* var(--nav-fill-top) 0%, */
+  /* var(--nav-fill-mid) 52%, */
+  /* var(--nav-fill-bottom) 100% */
+  /* ); */
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.16); */
+  /* backdrop-filter: blur(var(--blur-navbar)); */
+  /* -webkit-backdrop-filter: blur(var(--blur-navbar)); */
+  /* } */
 
-  .nav-blur-layer {
+  /* .nav-blur-layer {
     background: linear-gradient(
       to bottom,
       rgba(var(--nav-fill-rgb), 0.12) 0%,
@@ -73,5 +66,5 @@
       rgba(0, 0, 0, 0.3) 0%,
       rgba(0, 0, 0, 0.1) 100%
     );
-  }
+  } */
 </style>

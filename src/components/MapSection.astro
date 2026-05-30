@@ -1,15 +1,41 @@
 ---
-import { MessageCircle, ArrowUpRight } from "lucide-react";
+import { MessageCircle, ArrowUpRight, MapPin } from "lucide-react";
+
+const cities = [
+  {
+    name: "Franco da Rocha",
+    markerClass: "left-[52%] top-[52%]",
+  },
+  {
+    name: "Francisco Morato",
+    markerClass: "left-[50%] top-[46%]",
+  },
+  {
+    name: "Jundiai",
+    markerClass: "left-[40%] top-[28%]",
+  },
+  {
+    name: "Caieiras",
+    markerClass: "left-[51%] top-[66%]",
+  },
+];
+
+const mapEmbedUrl =
+  "https://www.google.com/maps?ll=-23.2900,-46.7700&z=10&output=embed";
+
+const mapsQuery = encodeURIComponent(
+  "Franco da Rocha, Francisco Morato, Jundiai, Caieiras",
+);
 ---
 
 <section
   id="mapa"
-  class="mx-auto flex w-full max-w-[1180px] flex-col px-4 py-12 sm:px-6 lg:px-10"
+  class="mx-auto flex w-full max-w-295 flex-col px-4 py-12 sm:px-6 lg:px-10"
   data-reveal
 >
   <div class="flex flex-wrap items-center gap-3">
     <h2 class="font-display text-h2 font-bold text-text-strong">
-      Nos encontre no Mapa
+      Cidades que atendemos
     </h2>
     <span class="flex items-center gap-1 text-sm font-semibold text-success">
       <MessageCircle className="h-4 w-4" /> WhatsApp
@@ -17,21 +43,46 @@ import { MessageCircle, ArrowUpRight } from "lucide-react";
     <span class="text-sm text-text-soft">(11) 93041-6535</span>
   </div>
 
+  <div class="mt-4 flex flex-wrap gap-2">
+    {
+      cities.map((city) => (
+        <span class="inline-flex items-center gap-1 rounded-pill border border-border-soft bg-bg-surface px-3 py-1.5 text-xs font-semibold text-text-body">
+          <MapPin className="h-3.5 w-3.5 text-primary" />
+          {city.name}
+        </span>
+      ))
+    }
+  </div>
+
   <div
-    class="relative mt-4 flex h-[420px] w-full overflow-hidden rounded-lg border border-border-soft bg-white shadow-soft"
+    class="relative mt-4 flex h-105 w-full overflow-hidden rounded-lg border border-border-soft bg-white shadow-soft"
   >
     <iframe
-      title="Mapa Franco da Rocha SP"
-      src="https://www.google.com/maps?q=Franco%20da%20Rocha%20SP&z=14&output=embed"
-      class="h-full w-full border-0"
+      title="Mapa de cidades atendidas"
+      src={mapEmbedUrl}
+      class="h-full w-full border-0 pointer-events-none"
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"></iframe>
 
+    <div class="pointer-events-none absolute inset-0 z-10">
+      {
+        cities.map((city) => (
+          <div class:list={["absolute hidden md:block", city.markerClass]}>
+            <span class="absolute -inset-2 animate-ping rounded-full bg-primary/35" />
+            <span class="relative block h-4 w-4 rounded-full bg-primary ring-2 ring-white" />
+            <span class="mt-1 inline-flex rounded-pill bg-white/95 px-2 py-1 text-[0.7rem] font-semibold text-text-strong shadow-soft">
+              {city.name}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+
     <a
-      href="https://maps.google.com/?q=Franco%20da%20Rocha%20SP"
+      href={`https://maps.google.com/?q=${mapsQuery}`}
       target="_blank"
       rel="noopener noreferrer"
-      class="absolute bottom-3 right-3 flex items-center gap-1 rounded-pill bg-white/90 px-4 py-2 text-sm font-medium text-text-body backdrop-blur-md transition-colors duration-200 hover:text-secondary"
+      class="absolute bottom-3 right-3 z-20 flex items-center gap-1 rounded-pill bg-white/90 px-4 py-2 text-sm font-medium text-text-body backdrop-blur-md transition-colors duration-200 hover:text-secondary"
     >
       Abrir Mapa <ArrowUpRight className="h-4 w-4" />
     </a>

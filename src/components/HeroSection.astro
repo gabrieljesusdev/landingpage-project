@@ -1,39 +1,93 @@
 ---
-import technician from "../assets/bg-technician.jpg";
+import technician1 from "../assets/bg-technician-1.jpg";
+import technician2 from "../assets/bg-technician-2.jpg";
+import technician3 from "../assets/bg-technician-3.jpg";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 ---
 
 <section
   id="inicio"
-  class="relative flex min-h-[86vh] w-full items-center justify-center overflow-hidden"
+  class="relative flex min-h-[86vh] w-full items-center overflow-hidden"
+  data-hero-root
   data-reveal
 >
-  <img
-    src={technician.src}
-    alt="Técnico realizando manutenção em ar-condicionado"
-    class="absolute inset-0 h-full w-full object-cover"
-    loading="eager"
-    fetchpriority="high"
-  />
+  <div class="hero-carousel absolute inset-0" data-hero-carousel>
+    <div class="hero-track" data-hero-track>
+      <div class="hero-slide">
+        <img
+          src={technician1.src}
+          alt="Técnico realizando manutenção em ar-condicionado"
+          class="h-full w-full object-cover"
+          loading="eager"
+          fetchpriority="high"
+          draggable="false"
+        />
+      </div>
+      <div class="hero-slide">
+        <img
+          src={technician2.src}
+          alt="Equipe técnica em atendimento de ar-condicionado"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          draggable="false"
+        />
+      </div>
+      <div class="hero-slide">
+        <img
+          src={technician3.src}
+          alt="Manutenção profissional em sistema de ar-condicionado"
+          class="h-full w-full object-cover"
+          loading="lazy"
+          draggable="false"
+        />
+      </div>
+    </div>
 
-  <div class="absolute inset-0 bg-[var(--bg-hero-overlay)]"></div>
-  <!-- <div class="hero-glow hero-glow-blue"></div>
-  <div class="hero-glow hero-glow-orange"></div> -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <button
+      class="hero-arrow hero-arrow-left"
+      type="button"
+      data-hero-prev
+      aria-label="Imagem anterior"
+    >
+      <ChevronLeft className="h-5 w-5" />
+    </button>
+
+    <button
+      class="hero-arrow hero-arrow-right"
+      type="button"
+      data-hero-next
+      aria-label="Próxima imagem"
+    >
+      <ChevronRight className="h-5 w-5" />
+    </button>
+
+    <div
+      class="hero-pagination"
+      data-hero-pagination
+      aria-label="Paginação do carrossel"
+    >
+      <button
+        type="button"
+        class="hero-bullet is-active"
+        aria-label="Ir para imagem 1"></button>
+      <button type="button" class="hero-bullet" aria-label="Ir para imagem 2"
+      ></button>
+      <button type="button" class="hero-bullet" aria-label="Ir para imagem 3"
+      ></button>
+    </div>
+  </div>
 
   <div
-    class="relative mx-auto flex w-full max-w-[1180px] flex-col items-center px-4 pt-24 text-center sm:px-6 lg:px-10"
+    class="relative pointer-events-none mx-auto flex w-full max-w-295 flex-col items-start px-4 pt-24 sm:px-6 lg:px-10"
   >
     <h1
       class="max-w-4xl text-hero-title font-bold leading-[1.12] text-white"
       data-reveal
       data-reveal-delay="1"
     >
-      Assistência técnica profissional
-      <br />
-      para ar-condicionado
-      <br />
-      <span class="text-secondary">residencial</span>
-      e
-      <span class="text-primary">comercial.</span>
+      Assistência técnica profissional residencial<br />e comercial.
     </h1>
 
     <p
@@ -49,7 +103,7 @@ import technician from "../assets/bg-technician.jpg";
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Solicitar orçamento gratuito agora"
-      class="mt-7 rounded-pill bg-secondary px-7 py-3 text-base font-semibold text-white shadow-button transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
+      class="pointer-events-auto mt-7 rounded-pill bg-secondary px-7 py-3 text-base font-semibold text-white shadow-button transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
       data-reveal
       data-reveal-delay="3"
     >
@@ -66,6 +120,106 @@ import technician from "../assets/bg-technician.jpg";
 </section>
 
 <style>
+  .hero-carousel {
+    z-index: 0;
+    touch-action: pan-y;
+    user-select: none;
+  }
+
+  .hero-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 320ms ease;
+    will-change: transform;
+  }
+
+  .hero-slide {
+    flex: 0 0 100%;
+    height: 100%;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      rgba(6, 18, 31, 0.8) 6%,
+      rgba(6, 18, 31, 0.5) 42%,
+      rgba(6, 18, 31, 0.62) 100%
+    );
+    pointer-events: none;
+  }
+
+  .hero-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 999px;
+    color: white;
+    background: rgba(12, 18, 28, 0.32);
+    transform: translateY(-50%);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .hero-arrow:hover {
+    background: rgba(12, 18, 28, 0.58);
+    border-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .hero-arrow:active {
+    transform: translateY(-50%) scale(0.97);
+  }
+
+  .hero-arrow-left {
+    left: 1rem;
+  }
+
+  .hero-arrow-right {
+    right: 1rem;
+  }
+
+  .hero-pagination {
+    position: absolute;
+    left: 50%;
+    bottom: 1.1rem;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transform: translateX(-50%);
+  }
+
+  .hero-bullet {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 999px;
+    border: 0;
+    appearance: none;
+    flex: 0 0 auto;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.65);
+    transition:
+      width 230ms ease,
+      background-color 230ms ease;
+  }
+
+  .hero-bullet.is-active {
+    width: 1.7rem;
+    background-color: var(--color-secondary);
+  }
+
   .hero-glow {
     position: absolute;
     width: 26rem;
@@ -86,4 +240,99 @@ import technician from "../assets/bg-technician.jpg";
     bottom: -6rem;
     background: var(--blur-orange);
   }
+
+  @media (max-width: 768px) {
+    .hero-arrow {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+
+    .hero-arrow-left {
+      left: 0.6rem;
+    }
+
+    .hero-arrow-right {
+      right: 0.6rem;
+    }
+  }
 </style>
+
+<script>
+  const heroRoots = document.querySelectorAll("[data-hero-root]");
+
+  heroRoots.forEach((root) => {
+    const carousel = root.querySelector<HTMLElement>("[data-hero-carousel]");
+    const track = root.querySelector<HTMLElement>("[data-hero-track]");
+    const prevBtn = root.querySelector<HTMLButtonElement>("[data-hero-prev]");
+    const nextBtn = root.querySelector<HTMLButtonElement>("[data-hero-next]");
+    const bullets = Array.from(
+      root.querySelectorAll<HTMLButtonElement>("[data-hero-pagination] .hero-bullet"),
+    );
+    const slides = Array.from(track?.children ?? []);
+
+    if (!carousel || !track || slides.length !== 3 || bullets.length !== 3) return;
+
+    let activeIndex = 0;
+    let touchStartX = 0;
+    let touchCurrentX = 0;
+    let isSwiping = false;
+
+    const goTo = (nextIndex: number) => {
+      activeIndex = (nextIndex + slides.length) % slides.length;
+      track.style.transform = `translateX(-${activeIndex * 100}%)`;
+
+      bullets.forEach((bullet, index) => {
+        const isActive = index === activeIndex;
+        bullet.classList.toggle("is-active", isActive);
+        bullet.setAttribute("aria-current", isActive ? "true" : "false");
+      });
+    };
+
+    prevBtn?.addEventListener("click", () => goTo(activeIndex - 1));
+    nextBtn?.addEventListener("click", () => goTo(activeIndex + 1));
+
+    bullets.forEach((bullet, index) => {
+      bullet.addEventListener("click", () => goTo(index));
+    });
+
+    root.addEventListener(
+      "touchstart",
+      (event: TouchEvent) => {
+        const target = event.target as HTMLElement | null;
+        if (target?.closest("a, button")) return;
+        touchStartX = event.touches[0]?.clientX ?? 0;
+        touchCurrentX = touchStartX;
+        isSwiping = true;
+      },
+      { passive: true },
+    );
+
+    root.addEventListener(
+      "touchmove",
+      (event: TouchEvent) => {
+        if (!isSwiping) return;
+        touchCurrentX = event.touches[0]?.clientX ?? touchCurrentX;
+      },
+      { passive: true },
+    );
+
+    root.addEventListener("touchend", () => {
+      if (!isSwiping) return;
+
+      const deltaX = touchCurrentX - touchStartX;
+      const threshold = 45;
+
+      if (Math.abs(deltaX) > threshold) {
+        goTo(deltaX < 0 ? activeIndex + 1 : activeIndex - 1);
+      }
+
+      isSwiping = false;
+    });
+
+    carousel.addEventListener("touchcancel", () => {
+      isSwiping = false;
+    });
+
+    goTo(0);
+  });
+</script>

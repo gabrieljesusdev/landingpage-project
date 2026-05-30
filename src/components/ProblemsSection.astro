@@ -1,56 +1,93 @@
 ---
-import technician from "../assets/bg-technician.jpg";
-import { CircleX } from "lucide-react";
+import technician1 from "../assets/bg-technician-1.jpg";
+import technician2 from "../assets/bg-technician-2.jpg";
+import technician3 from "../assets/bg-technician-3.jpg";
+import { ChevronRight } from "lucide-react";
 
-const problems = [
-  "Baixo desempenho e alto consumo de energia",
-  "Não está gelando",
-  "Vazando água",
-  "Fazendo muito barulho",
-  "Mau cheiro ao ligar",
-  "Desligando sozinho",
-  "Controle não funciona",
+const services = [
+  {
+    title: "Manutenção de Ar Condicionado",
+    description: "Limpeza e ajustes para manter o equipamento funcionando bem.",
+    image: technician1,
+    alt: "Técnico fazendo manutenção de ar-condicionado",
+    href: "/servicos/ar-condicionado",
+  },
+  {
+    title: "Manutenção de Gerador",
+    description: "Revisão preventiva e testes para garantir operação contínua.",
+    image: technician2,
+    alt: "Equipe realizando manutenção de gerador",
+    href: "/servicos/gerador",
+  },
+  {
+    title: "Manutenção de Elétrica",
+    description: "Diagnóstico e reparos com foco em segurança e desempenho.",
+    image: technician3,
+    alt: "Serviço de manutenção elétrica em ambiente técnico",
+    href: "/servicos/eletrica",
+  },
+  {
+    title: "Manutenção de Hidraulica",
+    description: "Correção de vazamentos e ajustes em tubulações e conexões.",
+    image: technician1,
+    alt: "Profissional executando manutenção hidráulica",
+    href: "/servicos/hidraulica",
+  },
 ];
 ---
 
 <section
-  class="mx-auto flex w-full max-w-[1180px] flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-center md:gap-10 lg:px-10"
+  id="servicos"
+  class="mx-auto flex w-full max-w-295 flex-col gap-8 px-4 py-12 sm:px-6 lg:px-10"
   data-reveal
 >
-  <div class="flex flex-1 flex-col">
+  <div class="flex max-w-2xl flex-col gap-3">
+    <span class="w-fit rounded-pill text-sm font-semibold text-primary">
+      Serviços
+    </span>
     <h2
       class="font-display text-h2 font-bold leading-[1.14] text-text-strong"
       data-reveal
       data-reveal-delay="1"
     >
-      Seu ar-condicionado apresenta
+      Soluções técnicas
       <br />
-      algum destes problemas?
+      para o seu negócio.
     </h2>
-
-    <ul class="mt-6 flex flex-col gap-2 text-sm text-danger sm:text-base">
-      {
-        problems.map((item) => (
-          <li class="flex items-center gap-2">
-            <CircleX className="h-4 w-4 shrink-0" />
-            <span>{item}</span>
-          </li>
-        ))
-      }
-    </ul>
-
-    <p class="mt-5 max-w-[40ch] text-base leading-[1.45] text-text-body">
-      Nossa equipe identifica o defeito rapidamente e realiza o reparo com
-      segurança e eficiência.
-    </p>
   </div>
 
-  <div class="flex flex-1 justify-end">
-    <img
-      src={technician.src}
-      alt="Ar-condicionado em manutenção"
-      class="h-[280px] w-full max-w-[520px] rounded-lg object-cover shadow-soft"
-      loading="lazy"
-    />
+  <div class="grid gap-2.5 md:grid-cols-2 xl:grid-cols-4">
+    {
+      services.map((service) => (
+        <a
+          href={service.href}
+          class="group flex h-full flex-col overflow-hidden rounded-xl border border-border-soft bg-bg-surface shadow-soft transition-all duration-200 hover:-translate-y-0.5"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src={service.image.src}
+              alt={service.alt}
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-linear-to-t from-[#08111b]/75 via-[#08111b]/20 to-transparent" />
+          </div>
+
+          <div class="flex flex-col gap-2 p-3.5">
+            <h3 class="font-display text-[0.95rem] font-semibold leading-[1.15] text-text-strong">
+              {service.title}
+            </h3>
+            <p class="text-[0.84rem] leading-[1.35] text-text-body">
+              {service.description}
+            </p>
+          </div>
+
+          <span class="mt-auto mb-4 mx-3.5 inline-flex w-full items-center justify-between rounded-pill p-0 text-[0.8rem] font-semibold text-text-soft transition-all duration-200 group-hover:text-text-strong">
+            Ver mais
+            <ChevronRight className="h-4 w-4 shrink-0 text-text-soft" />
+          </span>
+        </a>
+      ))
+    }
   </div>
 </section>
