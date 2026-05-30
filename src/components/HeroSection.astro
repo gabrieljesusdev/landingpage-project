@@ -13,103 +13,99 @@ const hero = siteContent.home.hero;
       data-hero-root
       data-reveal
     >
-  <div class="hero-carousel absolute inset-0" data-hero-carousel>
-    <div class="hero-track" data-hero-track>
-      {
-        hero.slides.map((slide, index) => (
-          <div class="hero-slide">
-            <img
-              src={slide.image}
-              alt={slide.alt}
-              class="h-full w-full object-cover"
-              loading={index === 0 ? "eager" : "lazy"}
-              fetchpriority={index === 0 ? "high" : undefined}
-              draggable="false"
+      <div class="hero-carousel absolute inset-0" data-hero-carousel>
+        <div class="hero-track" data-hero-track>
+          {hero.slides.map((slide, index) => (
+            <div class="hero-slide">
+              <img
+                src={slide.image}
+                alt={slide.alt}
+                class="h-full w-full object-cover"
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchpriority={index === 0 ? "high" : undefined}
+                draggable="false"
+              />
+            </div>
+          ))}
+        </div>
+
+        <div class="hero-overlay" aria-hidden="true" />
+
+        <button
+          class="hero-arrow hero-arrow-left"
+          type="button"
+          data-hero-prev
+          aria-label="Imagem anterior"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+
+        <button
+          class="hero-arrow hero-arrow-right"
+          type="button"
+          data-hero-next
+          aria-label="Próxima imagem"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+
+        <div
+          class="hero-pagination"
+          data-hero-pagination
+          aria-label="Paginação do carrossel"
+        >
+          {hero.slides.map((_, index) => (
+            <button
+              type="button"
+              class:list={["hero-bullet", index === 0 && "is-active"]}
+              aria-label={`Ir para imagem ${index + 1}`}
             />
-          </div>
-        ))
-      }
-    </div>
+          ))}
+        </div>
+      </div>
 
-    <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="relative pointer-events-none mx-auto flex w-full max-w-295 flex-col items-start px-4 pt-24 sm:px-6 lg:px-10">
+        <h1
+          class="max-w-4xl text-hero-title font-bold leading-[1.12] text-white"
+          data-reveal
+          data-reveal-delay="1"
+        >
+          {hero.title}
+        </h1>
 
-    <button
-      class="hero-arrow hero-arrow-left"
-      type="button"
-      data-hero-prev
-      aria-label="Imagem anterior"
-    >
-      <ChevronLeft className="h-5 w-5" />
-    </button>
+        <p
+          class="mt-3 max-w-2xl text-base font-medium text-white/88 sm:text-[1.2rem]"
+          data-reveal
+          data-reveal-delay="2"
+        >
+          {hero.subtitle}
+        </p>
 
-    <button
-      class="hero-arrow hero-arrow-right"
-      type="button"
-      data-hero-next
-      aria-label="Próxima imagem"
-    >
-      <ChevronRight className="h-5 w-5" />
-    </button>
+        <a
+          href={whatsappHref(hero.ctaMessage)}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Solicitar orçamento gratuito agora"
+          class="pointer-events-auto mt-7 rounded-pill bg-secondary px-7 py-3 text-base font-semibold text-white shadow-button transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
+          data-reveal
+          data-reveal-delay="3"
+        >
+          {hero.ctaText}
+        </a>
 
-    <div
-      class="hero-pagination"
-      data-hero-pagination
-      aria-label="Paginação do carrossel"
-    >
-      {
-        hero.slides.map((_, index) => (
-          <button
-            type="button"
-            class:list={["hero-bullet", index === 0 && "is-active"]}
-            aria-label={`Ir para imagem ${index + 1}`}
-          />
-        ))
-      }
-    </div>
-  </div>
-
-  <div
-    class="relative pointer-events-none mx-auto flex w-full max-w-295 flex-col items-start px-4 pt-24 sm:px-6 lg:px-10"
-  >
-    <h1
-      class="max-w-4xl text-hero-title font-bold leading-[1.12] text-white"
-      data-reveal
-      data-reveal-delay="1"
-    >
-      {hero.title}
-    </h1>
-
-    <p
-      class="mt-3 max-w-2xl text-base font-medium text-white/88 sm:text-[1.2rem]"
-      data-reveal
-      data-reveal-delay="2"
-    >
-      {hero.subtitle}
-    </p>
-
-    <a
-      href={whatsappHref(hero.ctaMessage)}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Solicitar orçamento gratuito agora"
-      class="pointer-events-auto mt-7 rounded-pill bg-secondary px-7 py-3 text-base font-semibold text-white shadow-button transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
-      data-reveal
-      data-reveal-delay="3"
-    >
-      {hero.ctaText}
-    </a>
-
-    <div
-      class="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm sm:text-[0.95rem]"
-    >
-      {
-        hero.stats.map((stat, index) => (
-          <span class:list={[index === 0 ? "font-medium text-secondary" : "text-star"]}>{stat}</span>
-        ))
-      }
-    </div>
-  </div>
-</section>
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm sm:text-[0.95rem]">
+          {hero.stats.map((stat, index) => (
+            <span
+              class:list={[
+                index === 0 ? "font-medium text-secondary" : "text-star",
+              ]}
+            >
+              {stat}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -266,7 +262,12 @@ const hero = siteContent.home.hero;
     );
     const slides = Array.from(track?.children ?? []);
 
-    if (!carousel || !track || slides.length < 1 || bullets.length !== slides.length)
+    if (
+      !carousel ||
+      !track ||
+      slides.length < 1 ||
+      bullets.length !== slides.length
+    )
       return;
 
     let activeIndex = 0;

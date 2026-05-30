@@ -50,7 +50,9 @@ const categories = [
     {
       service.topics?.length > 0 && (
         <ul class="mt-6 grid gap-2 text-sm text-text-body sm:grid-cols-2">
-          {service.topics.map((topic: string) => <li>• {topic}</li>)}
+          {service.topics.map((topic: string) => (
+            <li>• {topic}</li>
+          ))}
         </ul>
       )
     }
@@ -136,7 +138,9 @@ const categories = [
     </div>
 
     <a
-      href={whatsappHref(`Olá, ${service.ctaText}. Quero falar com um especialista.`)}
+      href={whatsappHref(
+        `Olá, ${service.ctaText}. Quero falar com um especialista.`,
+      )}
       target="_blank"
       rel="noopener noreferrer"
       class="mt-8 inline-flex w-fit items-center rounded-pill bg-primary px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"

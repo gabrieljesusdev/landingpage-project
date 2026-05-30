@@ -7,36 +7,32 @@ const { brand, navbar } = siteContent;
 {
   navbar.enabled && (
     <header class="fixed bg-white inset-x-0 top-0 z-50">
-  <div
-    class="mx-auto flex h-12.5 w-full md:max-w-295 items-center justify-between px-4 sm:px-6 lg:px-10"
-  >
-    <a href="/" class="font-display text-lg font-semibold text-black">{brand.name}</a>
+      <div class="mx-auto flex h-12.5 w-full md:max-w-295 items-center justify-between px-4 sm:px-6 lg:px-10">
+        <a href="/" class="font-display text-lg font-semibold text-black">
+          {brand.name}
+        </a>
 
-    <nav
-      class="hidden items-center gap-7 text-sm font-medium text-black/95 md:flex"
-    >
-      {
-        navbar.links.map((link) => (
-          <a
-            href={link.href}
-            class="transition-colors duration-200 hover:text-primary"
-          >
-            {link.label}
-          </a>
-        ))
-      }
-    </nav>
+        <nav class="hidden items-center gap-7 text-sm font-medium text-black/95 md:flex">
+          {navbar.links.map((link) => (
+            <a
+              href={link.href}
+              class="transition-colors duration-200 hover:text-primary"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
 
-    <a
-      href={whatsappHref(navbar.ctaMessage)}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="rounded-pill bg-primary px-2 text-[12px] md:px-5 py-2 md:text-sm font-semibold text-white shadow-[0_10px_24px_rgba(241,116,50,0.36)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
-    >
-      {navbar.ctaText}
-    </a>
-  </div>
-</header>
+        <a
+          href={whatsappHref(navbar.ctaMessage)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-pill bg-primary px-2 text-[12px] md:px-5 py-2 md:text-sm font-semibold text-white shadow-[0_10px_24px_rgba(241,116,50,0.36)] transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
+        >
+          {navbar.ctaText}
+        </a>
+      </div>
+    </header>
   )
 }
 
