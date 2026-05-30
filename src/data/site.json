@@ -22,7 +22,7 @@
   },
   "brand": {
     "name": "Entrans",
-    "whatsappNumber": "5511930416535"
+    "whatsappNumber": "5511998906155"
   },
   "navbar": {
     "enabled": true,
@@ -164,7 +164,7 @@
       "enabled": true,
       "title": "Cidades que atendemos",
       "whatsappLabel": "WhatsApp",
-      "phoneText": "(11) 93041-6535",
+      "phoneText": "(11) 99890-6155",
       "mapsQuery": "Franco da Rocha, Francisco Morato, Jundiai, Caieiras",
       "mapEmbedUrl": "https://www.google.com/maps?ll=-23.2900,-46.7700&z=10&output=embed",
       "cities": [
