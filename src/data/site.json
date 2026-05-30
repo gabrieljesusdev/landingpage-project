@@ -183,6 +183,22 @@
         {
           "name": "Caieiras",
           "markerClass": "left-[51%] top-[66%]"
+        },
+        {
+          "name": "São Bernardo do Campo",
+          "markerClass": null
+        },
+        {
+          "name": "Santo André",
+          "markerClass": null
+        },
+        {
+          "name": "São Caetano",
+          "markerClass": null
+        },
+        {
+          "name": "Diadema",
+          "markerClass": null
         }
       ]
     }

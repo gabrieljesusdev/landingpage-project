@@ -14,7 +14,7 @@ const fallbackRedirectUrl = whatsappHref(siteContent.navbar.ctaMessage);
     class="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl opacity-0 translate-y-3 scale-[0.97] transition-all duration-220 ease-out"
   >
     <h3 class="font-display text-2xl font-semibold text-text-strong">
-      Estou redirecionando você
+      Agendamento de visita
     </h3>
 
     <p class="mt-3 text-sm leading-relaxed text-text-body">
@@ -24,13 +24,6 @@ const fallbackRedirectUrl = whatsappHref(siteContent.navbar.ctaMessage);
 
     <p class="mt-4 text-5xl font-extrabold leading-none text-emerald-500">
       R$100,00
-    </p>
-
-    <p class="mt-4 text-sm font-medium text-text-soft">
-      Redirecionando em
-      <span data-navbar-cta-countdown class="font-bold text-text-strong">3</span
-      >
-      segundos.
     </p>
 
     <div class="mt-6 flex flex-wrap items-center gap-3">
@@ -46,7 +39,7 @@ const fallbackRedirectUrl = whatsappHref(siteContent.navbar.ctaMessage);
         data-navbar-cta-redirect
         class="rounded-pill bg-emerald-500 px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:brightness-110"
       >
-        Redirecionar
+        Ok
       </button>
     </div>
   </div>
@@ -56,44 +49,20 @@ const fallbackRedirectUrl = whatsappHref(siteContent.navbar.ctaMessage);
   (() => {
     const modal = document.querySelector("[data-navbar-cta-modal]");
     const modalCard = document.querySelector("[data-navbar-cta-card]");
-    const countdown = document.querySelector("[data-navbar-cta-countdown]");
     const cancelButton = document.querySelector("[data-navbar-cta-cancel]");
     const redirectButton = document.querySelector("[data-navbar-cta-redirect]");
 
-    if (
-      !modal ||
-      !modalCard ||
-      !countdown ||
-      !cancelButton ||
-      !redirectButton
-    ) {
+    if (!modal || !modalCard || !cancelButton || !redirectButton) {
       return;
     }
 
     const animationDurationMs = 220;
-    const initialSeconds = 100;
     const fallbackUrl = modal.getAttribute("data-fallback-redirect-url") || "";
 
-    let secondsLeft = initialSeconds;
-    let timerId = null;
     let closeTimeoutId = null;
     let redirectUrl = fallbackUrl;
 
-    const clearTimers = () => {
-      if (timerId) {
-        window.clearInterval(timerId);
-        timerId = null;
-      }
-
-      if (closeTimeoutId) {
-        window.clearTimeout(closeTimeoutId);
-        closeTimeoutId = null;
-      }
-    };
-
     const hideModal = () => {
-      clearTimers();
-
       modal.classList.add("opacity-0", "pointer-events-none");
       modalCard.classList.add("opacity-0", "translate-y-3", "scale-[0.97]");
       modalCard.classList.remove("opacity-100", "translate-y-0", "scale-100");
@@ -112,11 +81,7 @@ const fallbackRedirectUrl = whatsappHref(siteContent.navbar.ctaMessage);
     };
 
     const openModal = (nextUrl) => {
-      clearTimers();
-
       redirectUrl = nextUrl || fallbackUrl;
-      secondsLeft = initialSeconds;
-      countdown.textContent = String(secondsLeft);
       modal.classList.remove("hidden");
       modal.classList.add("flex");
 
@@ -129,15 +94,6 @@ const fallbackRedirectUrl = whatsappHref(siteContent.navbar.ctaMessage);
         );
         modalCard.classList.add("opacity-100", "translate-y-0", "scale-100");
       });
-
-      timerId = window.setInterval(() => {
-        secondsLeft -= 1;
-        countdown.textContent = String(Math.max(secondsLeft, 0));
-
-        if (secondsLeft <= 0) {
-          redirectNow();
-        }
-      }, 1000);
     };
 
     document.addEventListener("click", (event) => {
