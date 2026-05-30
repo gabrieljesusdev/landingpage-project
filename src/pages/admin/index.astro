@@ -1,5 +1,6 @@
 ---
-const storyblokSpaceId = import.meta.env.STORYBLOK_SPACE_ID ?? "292836113300310";
+const storyblokSpaceId =
+  import.meta.env.STORYBLOK_SPACE_ID ?? "292836113300310";
 const storyblokStoryId = 182130388001213;
 const dashboardUrl = storyblokSpaceId
   ? `https://app.storyblok.com/#/me/spaces/${storyblokSpaceId}/stories/${storyblokStoryId}`
@@ -74,9 +75,11 @@ const dashboardUrl = storyblokSpaceId
         Storyblok.
       </p>
       <p>
-        {storyblokSpaceId
-          ? `Space ativo: ${storyblokSpaceId}`
-          : "Defina STORYBLOK_SPACE_ID no .env para abrir direto no seu space."}
+        {
+          storyblokSpaceId
+            ? `Space ativo: ${storyblokSpaceId}`
+            : "Defina STORYBLOK_SPACE_ID no .env para abrir direto no seu space."
+        }
       </p>
       <a href={dashboardUrl} target="_blank" rel="noopener noreferrer">
         Abrir editor do site

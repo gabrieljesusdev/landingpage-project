@@ -141,7 +141,7 @@ const storyblokVersion = import.meta.env.DEV ? "draft" : "published";
 const storyblokClient = storyblokPreviewToken
   ? new StoryblokClient({
       accessToken: storyblokPreviewToken,
-      ...(storyblokRegion ? { region: storyblokRegion } : {})
+      ...(storyblokRegion ? { region: storyblokRegion } : {}),
     })
   : null;
 
@@ -177,34 +177,56 @@ const normalizeStructuredSiteContent = (
   }
 
   const seo = {
-    defaultTitle: readString(value, "seo_defaultTitle") || readString(value, "seoDefaultTitle"),
+    defaultTitle:
+      readString(value, "seo_defaultTitle") ||
+      readString(value, "seoDefaultTitle"),
     defaultDescription:
       readString(value, "seo_defaultDescription") ||
       readString(value, "seoDefaultDescription"),
-    keywords: readString(value, "seo_keywords") || readString(value, "seoKeywords"),
+    keywords:
+      readString(value, "seo_keywords") || readString(value, "seoKeywords"),
   };
 
   const theme = {
-    primary: readString(value, "theme_primary") || readString(value, "themePrimary"),
-    secondary: readString(value, "theme_secondary") || readString(value, "themeSecondary"),
-    bgPage: readString(value, "theme_bgPage") || readString(value, "themeBgPage"),
-    bgSurface: readString(value, "theme_bgSurface") || readString(value, "themeBgSurface"),
-    textStrong: readString(value, "theme_textStrong") || readString(value, "themeTextStrong"),
-    textBody: readString(value, "theme_textBody") || readString(value, "themeTextBody"),
-    textSoft: readString(value, "theme_textSoft") || readString(value, "themeTextSoft"),
-    footer: readString(value, "theme_footer") || readString(value, "themeFooter"),
-    danger: readString(value, "theme_danger") || readString(value, "themeDanger"),
-    success: readString(value, "theme_success") || readString(value, "themeSuccess"),
+    primary:
+      readString(value, "theme_primary") || readString(value, "themePrimary"),
+    secondary:
+      readString(value, "theme_secondary") ||
+      readString(value, "themeSecondary"),
+    bgPage:
+      readString(value, "theme_bgPage") || readString(value, "themeBgPage"),
+    bgSurface:
+      readString(value, "theme_bgSurface") ||
+      readString(value, "themeBgSurface"),
+    textStrong:
+      readString(value, "theme_textStrong") ||
+      readString(value, "themeTextStrong"),
+    textBody:
+      readString(value, "theme_textBody") || readString(value, "themeTextBody"),
+    textSoft:
+      readString(value, "theme_textSoft") || readString(value, "themeTextSoft"),
+    footer:
+      readString(value, "theme_footer") || readString(value, "themeFooter"),
+    danger:
+      readString(value, "theme_danger") || readString(value, "themeDanger"),
+    success:
+      readString(value, "theme_success") || readString(value, "themeSuccess"),
     star: readString(value, "theme_star") || readString(value, "themeStar"),
-    borderSoft: readString(value, "theme_borderSoft") || readString(value, "themeBorderSoft"),
-    fontSans: readString(value, "theme_fontSans") || readString(value, "themeFontSans"),
-    fontDisplay: readString(value, "theme_fontDisplay") || readString(value, "themeFontDisplay"),
+    borderSoft:
+      readString(value, "theme_borderSoft") ||
+      readString(value, "themeBorderSoft"),
+    fontSans:
+      readString(value, "theme_fontSans") || readString(value, "themeFontSans"),
+    fontDisplay:
+      readString(value, "theme_fontDisplay") ||
+      readString(value, "themeFontDisplay"),
   };
 
   const brand = {
     name: readString(value, "brand_name") || readString(value, "brandName"),
     whatsappNumber:
-      readString(value, "brand_whatsappNumber") || readString(value, "brandWhatsappNumber"),
+      readString(value, "brand_whatsappNumber") ||
+      readString(value, "brandWhatsappNumber"),
   };
 
   const navbarLinks = readBlocks(value, "navbar_links").map((entry) => {
@@ -223,12 +245,17 @@ const normalizeStructuredSiteContent = (
     };
   });
 
-  const heroStats = readBlocks(value, "home_hero_stats").map((entry) => {
-    const record = entry as Record<string, unknown>;
-    return readString(record, "text");
-  }).filter(Boolean);
+  const heroStats = readBlocks(value, "home_hero_stats")
+    .map((entry) => {
+      const record = entry as Record<string, unknown>;
+      return readString(record, "text");
+    })
+    .filter(Boolean);
 
-  const servicesShowcaseCards = readBlocks(value, "home_servicesShowcase_cards").map((entry) => {
+  const servicesShowcaseCards = readBlocks(
+    value,
+    "home_servicesShowcase_cards",
+  ).map((entry) => {
     const record = entry as Record<string, unknown>;
     return {
       title: readString(record, "title"),
@@ -239,24 +266,28 @@ const normalizeStructuredSiteContent = (
     };
   });
 
-  const iconServiceCards = readBlocks(value, "home_iconServices_cards").map((entry) => {
-    const record = entry as Record<string, unknown>;
-    return {
-      title: readString(record, "title"),
-      desc: readString(record, "desc"),
-      icon: readString(record, "icon"),
-      href: readString(record, "href"),
-    };
-  });
+  const iconServiceCards = readBlocks(value, "home_iconServices_cards").map(
+    (entry) => {
+      const record = entry as Record<string, unknown>;
+      return {
+        title: readString(record, "title"),
+        desc: readString(record, "desc"),
+        icon: readString(record, "icon"),
+        href: readString(record, "href"),
+      };
+    },
+  );
 
-  const testimonialItems = readBlocks(value, "home_testimonials_items").map((entry) => {
-    const record = entry as Record<string, unknown>;
-    return {
-      name: readString(record, "name"),
-      text: readString(record, "text"),
-      avatar: readString(record, "avatar"),
-    };
-  });
+  const testimonialItems = readBlocks(value, "home_testimonials_items").map(
+    (entry) => {
+      const record = entry as Record<string, unknown>;
+      return {
+        name: readString(record, "name"),
+        text: readString(record, "text"),
+        avatar: readString(record, "avatar"),
+      };
+    },
+  );
 
   const cities = readBlocks(value, "home_map_cities").map((entry) => {
     const record = entry as Record<string, unknown>;
@@ -266,23 +297,27 @@ const normalizeStructuredSiteContent = (
     };
   });
 
-  const servicesPageCards = readBlocks(value, "servicesPage_cards").map((entry) => {
-    const record = entry as Record<string, unknown>;
-    return {
-      title: readString(record, "title"),
-      description: readString(record, "description"),
-      image: readString(record, "image"),
-      alt: readString(record, "alt"),
-      href: readString(record, "href"),
-    };
-  });
+  const servicesPageCards = readBlocks(value, "servicesPage_cards").map(
+    (entry) => {
+      const record = entry as Record<string, unknown>;
+      return {
+        title: readString(record, "title"),
+        description: readString(record, "description"),
+        image: readString(record, "image"),
+        alt: readString(record, "alt"),
+        href: readString(record, "href"),
+      };
+    },
+  );
 
   const serviceDetails = readBlocks(value, "serviceDetails").map((entry) => {
     const record = entry as Record<string, unknown>;
-    const topics = readBlocks(record, "topics").map((topicEntry) => {
-      const topicRecord = topicEntry as Record<string, unknown>;
-      return readString(topicRecord, "topic");
-    }).filter(Boolean);
+    const topics = readBlocks(record, "topics")
+      .map((topicEntry) => {
+        const topicRecord = topicEntry as Record<string, unknown>;
+        return readString(topicRecord, "topic");
+      })
+      .filter(Boolean);
 
     const gallery = readBlocks(record, "gallery").map((galleryEntry) => {
       const galleryRecord = galleryEntry as Record<string, unknown>;
@@ -312,44 +347,65 @@ const normalizeStructuredSiteContent = (
     theme,
     brand,
     navbar: {
-      enabled: readBoolean(value, "navbar_enabled") || readBoolean(value, "navbarEnabled"),
+      enabled:
+        readBoolean(value, "navbar_enabled") ||
+        readBoolean(value, "navbarEnabled"),
       links: navbarLinks,
-      ctaText: readString(value, "navbar_ctaText") || readString(value, "navbarCtaText"),
+      ctaText:
+        readString(value, "navbar_ctaText") ||
+        readString(value, "navbarCtaText"),
       ctaMessage:
-        readString(value, "navbar_ctaMessage") || readString(value, "navbarCtaMessage"),
+        readString(value, "navbar_ctaMessage") ||
+        readString(value, "navbarCtaMessage"),
     },
     home: {
       hero: {
         enabled:
-          readBoolean(value, "home_hero_enabled") || readBoolean(value, "homeHeroEnabled"),
+          readBoolean(value, "home_hero_enabled") ||
+          readBoolean(value, "homeHeroEnabled"),
         slides: heroSlides,
-        title: readString(value, "home_hero_title") || readString(value, "homeHeroTitle"),
+        title:
+          readString(value, "home_hero_title") ||
+          readString(value, "homeHeroTitle"),
         subtitle:
-          readString(value, "home_hero_subtitle") || readString(value, "homeHeroSubtitle"),
-        ctaText: readString(value, "home_hero_ctaText") || readString(value, "homeHeroCtaText"),
+          readString(value, "home_hero_subtitle") ||
+          readString(value, "homeHeroSubtitle"),
+        ctaText:
+          readString(value, "home_hero_ctaText") ||
+          readString(value, "homeHeroCtaText"),
         ctaMessage:
-          readString(value, "home_hero_ctaMessage") || readString(value, "homeHeroCtaMessage"),
+          readString(value, "home_hero_ctaMessage") ||
+          readString(value, "homeHeroCtaMessage"),
         stats: heroStats,
       },
       servicesShowcase: {
         enabled:
           readBoolean(value, "home_servicesShowcase_enabled") ||
           readBoolean(value, "homeServicesShowcaseEnabled"),
-        label: readString(value, "home_servicesShowcase_label") || readString(value, "homeServicesShowcaseLabel"),
-        title: readString(value, "home_servicesShowcase_title") || readString(value, "homeServicesShowcaseTitle"),
+        label:
+          readString(value, "home_servicesShowcase_label") ||
+          readString(value, "homeServicesShowcaseLabel"),
+        title:
+          readString(value, "home_servicesShowcase_title") ||
+          readString(value, "homeServicesShowcaseTitle"),
         cards: servicesShowcaseCards,
       },
       iconServices: {
         enabled:
-          readBoolean(value, "home_iconServices_enabled") || readBoolean(value, "homeIconServicesEnabled"),
-        title: readString(value, "home_iconServices_title") || readString(value, "homeIconServicesTitle"),
+          readBoolean(value, "home_iconServices_enabled") ||
+          readBoolean(value, "homeIconServicesEnabled"),
+        title:
+          readString(value, "home_iconServices_title") ||
+          readString(value, "homeIconServicesTitle"),
         cards: iconServiceCards,
       },
       testimonials: {
         enabled:
           readBoolean(value, "home_testimonials_enabled") ||
           readBoolean(value, "homeTestimonialsEnabled"),
-        title: readString(value, "home_testimonials_title") || readString(value, "homeTestimonialsTitle"),
+        title:
+          readString(value, "home_testimonials_title") ||
+          readString(value, "homeTestimonialsTitle"),
         highlight:
           readString(value, "home_testimonials_highlight") ||
           readString(value, "homeTestimonialsHighlight"),
@@ -360,7 +416,8 @@ const normalizeStructuredSiteContent = (
           readString(value, "home_testimonials_preCtaText") ||
           readString(value, "homeTestimonialsPreCtaText"),
         ctaText:
-          readString(value, "home_testimonials_ctaText") || readString(value, "homeTestimonialsCtaText"),
+          readString(value, "home_testimonials_ctaText") ||
+          readString(value, "homeTestimonialsCtaText"),
         ctaMessage:
           readString(value, "home_testimonials_ctaMessage") ||
           readString(value, "homeTestimonialsCtaMessage"),
@@ -370,37 +427,72 @@ const normalizeStructuredSiteContent = (
         items: testimonialItems,
       },
       map: {
-        enabled: readBoolean(value, "home_map_enabled") || readBoolean(value, "homeMapEnabled"),
-        title: readString(value, "home_map_title") || readString(value, "homeMapTitle"),
+        enabled:
+          readBoolean(value, "home_map_enabled") ||
+          readBoolean(value, "homeMapEnabled"),
+        title:
+          readString(value, "home_map_title") ||
+          readString(value, "homeMapTitle"),
         whatsappLabel:
-          readString(value, "home_map_whatsappLabel") || readString(value, "homeMapWhatsappLabel"),
-        phoneText: readString(value, "home_map_phoneText") || readString(value, "homeMapPhoneText"),
-        mapsQuery: readString(value, "home_map_mapsQuery") || readString(value, "homeMapMapsQuery"),
+          readString(value, "home_map_whatsappLabel") ||
+          readString(value, "homeMapWhatsappLabel"),
+        phoneText:
+          readString(value, "home_map_phoneText") ||
+          readString(value, "homeMapPhoneText"),
+        mapsQuery:
+          readString(value, "home_map_mapsQuery") ||
+          readString(value, "homeMapMapsQuery"),
         mapEmbedUrl:
-          readString(value, "home_map_mapEmbedUrl") || readString(value, "homeMapMapEmbedUrl"),
+          readString(value, "home_map_mapEmbedUrl") ||
+          readString(value, "homeMapMapEmbedUrl"),
         cities,
       },
     },
     footer: {
-      enabled: readBoolean(value, "footer_enabled") || readBoolean(value, "footerEnabled"),
-      copyright: readString(value, "footer_copyright") || readString(value, "footerCopyright"),
+      enabled:
+        readBoolean(value, "footer_enabled") ||
+        readBoolean(value, "footerEnabled"),
+      copyright:
+        readString(value, "footer_copyright") ||
+        readString(value, "footerCopyright"),
       locationLabel:
-        readString(value, "footer_locationLabel") || readString(value, "footerLocationLabel"),
+        readString(value, "footer_locationLabel") ||
+        readString(value, "footerLocationLabel"),
       locationText:
-        readString(value, "footer_locationText") || readString(value, "footerLocationText"),
-      hoursLabel: readString(value, "footer_hoursLabel") || readString(value, "footerHoursLabel"),
-      hoursText: readString(value, "footer_hoursText") || readString(value, "footerHoursText"),
-      phoneLabel: readString(value, "footer_phoneLabel") || readString(value, "footerPhoneLabel"),
-      phoneText: readString(value, "footer_phoneText") || readString(value, "footerPhoneText"),
+        readString(value, "footer_locationText") ||
+        readString(value, "footerLocationText"),
+      hoursLabel:
+        readString(value, "footer_hoursLabel") ||
+        readString(value, "footerHoursLabel"),
+      hoursText:
+        readString(value, "footer_hoursText") ||
+        readString(value, "footerHoursText"),
+      phoneLabel:
+        readString(value, "footer_phoneLabel") ||
+        readString(value, "footerPhoneLabel"),
+      phoneText:
+        readString(value, "footer_phoneText") ||
+        readString(value, "footerPhoneText"),
     },
     servicesPage: {
-      title: readString(value, "servicesPage_title") || readString(value, "servicesPageTitle"),
+      title:
+        readString(value, "servicesPage_title") ||
+        readString(value, "servicesPageTitle"),
       description:
-        readString(value, "servicesPage_description") || readString(value, "servicesPageDescription"),
-      badge: readString(value, "servicesPage_badge") || readString(value, "servicesPageBadge"),
-      heading: readString(value, "servicesPage_heading") || readString(value, "servicesPageHeading"),
-      intro: readString(value, "servicesPage_intro") || readString(value, "servicesPageIntro"),
-      backText: readString(value, "servicesPage_backText") || readString(value, "servicesPageBackText"),
+        readString(value, "servicesPage_description") ||
+        readString(value, "servicesPageDescription"),
+      badge:
+        readString(value, "servicesPage_badge") ||
+        readString(value, "servicesPageBadge"),
+      heading:
+        readString(value, "servicesPage_heading") ||
+        readString(value, "servicesPageHeading"),
+      intro:
+        readString(value, "servicesPage_intro") ||
+        readString(value, "servicesPageIntro"),
+      backText:
+        readString(value, "servicesPage_backText") ||
+        readString(value, "servicesPageBackText"),
       cards: servicesPageCards,
     },
     serviceDetails,
@@ -410,10 +502,7 @@ const normalizeStructuredSiteContent = (
 };
 
 const parseSiteJson = (value: string): SiteContent | null => {
-  const candidates = [
-    value,
-    value.replace('}}},"footer"', '}},"footer"')
-  ];
+  const candidates = [value, value.replace('}}},"footer"', '}},"footer"')];
   const firstBrace = value.indexOf("{");
   const lastBrace = value.lastIndexOf("}");
 
@@ -433,7 +522,9 @@ const parseSiteJson = (value: string): SiteContent | null => {
   return null;
 };
 
-const pickStoryData = (content: Record<string, unknown>): SiteContent | null => {
+const pickStoryData = (
+  content: Record<string, unknown>,
+): SiteContent | null => {
   const structuredSiteContent = normalizeStructuredSiteContent(content);
 
   if (structuredSiteContent) {
@@ -471,15 +562,20 @@ const loadSiteContent = async (): Promise<SiteContent> => {
   }
 
   try {
-    const response = await storyblokClient.get(`cdn/stories/${storyblokContentSlug}`, {
-      version: storyblokVersion,
-      cv: Date.now()
-    });
+    const response = await storyblokClient.get(
+      `cdn/stories/${storyblokContentSlug}`,
+      {
+        version: storyblokVersion,
+        cv: Date.now(),
+      },
+    );
 
     const storyContent = response?.data?.story?.content;
 
     if (!storyContent || typeof storyContent !== "object") {
-      console.warn("Storyblok story content is missing. Falling back to local JSON.");
+      console.warn(
+        "Storyblok story content is missing. Falling back to local JSON.",
+      );
       return localSiteContent;
     }
 
@@ -487,14 +583,17 @@ const loadSiteContent = async (): Promise<SiteContent> => {
 
     if (!picked) {
       console.warn(
-        "Storyblok story content does not match expected shape. Falling back to local JSON."
+        "Storyblok story content does not match expected shape. Falling back to local JSON.",
       );
       return localSiteContent;
     }
 
     return isSiteContent(picked) ? picked : localSiteContent;
   } catch (error) {
-    console.warn("Storyblok request failed. Falling back to local JSON.", error);
+    console.warn(
+      "Storyblok request failed. Falling back to local JSON.",
+      error,
+    );
     return localSiteContent;
   }
 };
